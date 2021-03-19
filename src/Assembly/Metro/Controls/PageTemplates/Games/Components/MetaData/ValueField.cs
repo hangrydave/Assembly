@@ -12,14 +12,16 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private string _name;
 		private uint _offset;
 		private string _tooltip;
+		protected Action<uint?, int> _setFieldSelection;
 
-		public ValueField(string name, uint offset, long address, uint pluginLine, string tooltip)
+		public ValueField(string name, uint offset, long address, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
 		{
 			_name = name;
 			_offset = offset;
 			_address = address;
 			PluginLine = pluginLine;
 			_tooltip = tooltip;
+			_setFieldSelection = fieldSelected;
 		}
 
 		/// <summary>
@@ -77,6 +79,18 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 				NotifyPropertyChanged("ToolTip");
 			}
 		}
+
+		public abstract int Size();
+
+		public void SetFieldSelection()
+        {
+			_setFieldSelection(Offset, Size());
+        }
+
+		public void ClearFieldSelection()
+        {
+			_setFieldSelection(null, 0);
+        }
 
 		public bool ToolTipExists
 		{

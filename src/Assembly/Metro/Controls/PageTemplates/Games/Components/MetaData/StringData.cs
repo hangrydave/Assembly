@@ -1,4 +1,6 @@
-﻿namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
+﻿using System;
+
+namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
 	public enum StringType
 	{
@@ -8,15 +10,15 @@
 
 	public class StringData : ValueField
 	{
-		private int _size;
+		private int _length;
 		private StringType _type;
 		private string _value;
 
-		public StringData(string name, uint offset, long address, StringType type, string value, int size, uint pluginLine, string tooltip)
-			: base(name, offset, address, pluginLine, tooltip)
+		public StringData(string name, uint offset, long address, StringType type, string value, int size, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
 		{
 			_value = value;
-			_size = size;
+			_length = size;
 			_type = type;
 		}
 
@@ -30,12 +32,12 @@
 			}
 		}
 
-		public int Size
+		public new int Length
 		{
-			get { return _size; }
+			get { return _length; }
 			set
 			{
-				_size = value;
+				_length = value;
 				NotifyPropertyChanged("Size");
 				NotifyPropertyChanged("MaxLength");
 			}
@@ -48,11 +50,11 @@
 				switch (_type)
 				{
 					case StringType.ASCII:
-						return _size;
+						return _length;
 					case StringType.UTF16:
-						return _size/2;
+						return _length/2;
 					default:
-						return _size;
+						return _length;
 				}
 			}
 		}
@@ -80,7 +82,9 @@
 
 		public override MetaField CloneValue()
 		{
-			return new StringData(Name, Offset, FieldAddress, _type, _value, _size, PluginLine, ToolTip);
+			return new StringData(Name, Offset, FieldAddress, _type, _value, _length, PluginLine, ToolTip, _setFieldSelection);
 		}
+
+		public override int Size() => Length;
 	}
 }

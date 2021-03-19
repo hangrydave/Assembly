@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
@@ -16,8 +17,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private EnumType _type;
 		private int _value;
 
-		public EnumData(string name, uint offset, long address, EnumType type, int value, uint pluginLine, string tooltip)
-			: base(name, offset, address, pluginLine, tooltip)
+		public EnumData(string name, uint offset, long address, EnumType type, int value, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
 		{
 			_type = type;
 			_value = value;
@@ -50,7 +51,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			}
 		}
 
-		public EnumValue SelectedValue
+        public EnumValue SelectedValue
 		{
 			get { return _selectedValue; }
 			set
@@ -70,7 +71,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			var result = new EnumData(Name, Offset, FieldAddress, _type, _value, PluginLine, ToolTip);
+			var result = new EnumData(Name, Offset, FieldAddress, _type, _value, PluginLine, ToolTip, _setFieldSelection);
 			foreach (EnumValue option in Values)
 			{
 				var copiedValue = new EnumValue(option.Name, option.Value, option.ToolTip);
@@ -79,6 +80,20 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 					result._selectedValue = copiedValue;
 			}
 			return result;
+		}
+
+		public override int Size()
+		{
+			switch (_type)
+			{
+				case EnumType.Enum8:
+					return 1;
+				case EnumType.Enum16:
+					return 2;
+				case EnumType.Enum32:
+					return 4;
+			}
+			return 1;
 		}
 	}
 

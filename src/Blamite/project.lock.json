@@ -65,7 +65,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\drago\\.nuget\\packages\\": {}
+    "C:\\Users\\david\\.nuget\\packages\\": {}
   },
   "project": {
     "title": "Blamite",
@@ -87,16 +87,16 @@
       "summary": "DotNet library for interacting with Halo data."
     },
     "restore": {
-      "projectUniqueName": "Z:\\Modding stuff\\_dev_assembly\\_new_mcc\\_uh\\Assembly\\src\\Blamite\\Blamite.csproj",
+      "projectUniqueName": "D:\\Programming\\HaloProjects\\Assembly\\src\\Blamite\\Blamite.csproj",
       "projectName": "Blamite",
-      "projectPath": "Z:\\Modding stuff\\_dev_assembly\\_new_mcc\\_uh\\Assembly\\src\\Blamite\\Blamite.csproj",
-      "projectJsonPath": "Z:\\Modding stuff\\_dev_assembly\\_new_mcc\\_uh\\Assembly\\src\\Blamite\\project.json",
-      "packagesPath": "C:\\Users\\drago\\.nuget\\packages\\",
-      "outputPath": "Z:\\Modding stuff\\_dev_assembly\\_new_mcc\\_uh\\Assembly\\src\\Blamite\\obj\\",
+      "projectPath": "D:\\Programming\\HaloProjects\\Assembly\\src\\Blamite\\Blamite.csproj",
+      "projectJsonPath": "D:\\Programming\\HaloProjects\\Assembly\\src\\Blamite\\project.json",
+      "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
+      "outputPath": "D:\\Programming\\HaloProjects\\Assembly\\src\\Blamite\\obj\\",
       "projectStyle": "ProjectJson",
       "configFilePaths": [
-        "Z:\\Modding stuff\\_dev_assembly\\_new_mcc\\_uh\\Assembly\\src\\.nuget\\NuGet.Config",
-        "C:\\Users\\drago\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "D:\\Programming\\HaloProjects\\Assembly\\src\\.nuget\\NuGet.Config",
+        "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "sources": {

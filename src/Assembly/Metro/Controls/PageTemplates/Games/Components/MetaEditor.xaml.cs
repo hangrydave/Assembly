@@ -71,8 +71,10 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 		private ObservableCollection<SearchResult> _searchResults;
 		private TagEntry _tag;
 
+		private Action<uint?, int> _fieldSelected;
+
 		public MetaEditor(EngineDescription buildInfo, TagEntry tag, MetaContainer parentContainer, TagHierarchy tags,
-			ICacheFile cache, IStreamManager streamManager, IRTEProvider rteProvider, Trie stringIDTrie)
+			ICacheFile cache, IStreamManager streamManager, IRTEProvider rteProvider, Trie stringIDTrie, Action<uint?, int> fieldSelected)
 		{
 			InitializeComponent();
 
@@ -84,6 +86,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 			_rteProvider = rteProvider;
 			_searchTimer = new Timer(SearchTimer);
 			_stringIdTrie = stringIDTrie;
+			_fieldSelected = fieldSelected;
 
 			LoadNewTagEntry(tag);
 
@@ -145,7 +148,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 			using (XmlReader xml = XmlReader.Create(_pluginPath))
 			{
 				_pluginVisitor = new ThirdGenPluginVisitor(_tags, _stringIdTrie, _cache.MetaArea,
-					App.AssemblyStorage.AssemblySettings.PluginsShowInvisibles);
+					App.AssemblyStorage.AssemblySettings.PluginsShowInvisibles, _fieldSelected);
 				AssemblyPluginLoader.LoadPlugin(xml, _pluginVisitor);
 			}
 
@@ -527,7 +530,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 				VariousFunctions.GetApplicationLocation() + @"Plugins");
 			XmlReader reader = XmlReader.Create(path);
 
-			var plugin = new ThirdGenPluginVisitor(_tags, _stringIdTrie, _cache.MetaArea, true);
+			var plugin = new ThirdGenPluginVisitor(_tags, _stringIdTrie, _cache.MetaArea, true, _fieldSelected);
 			AssemblyPluginLoader.LoadPlugin(reader, plugin);
 			reader.Close();
 

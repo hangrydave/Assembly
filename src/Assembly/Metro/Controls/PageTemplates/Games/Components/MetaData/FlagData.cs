@@ -20,8 +20,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private FlagsType _type;
 		private ulong _value;
 
-		public FlagData(string name, uint offset, long address, FlagsType type, uint pluginLine, string tooltip)
-			: base(name, offset, address, pluginLine, tooltip)
+		public FlagData(string name, uint offset, long address, FlagsType type, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
 		{
 			_type = type;
 			CheckAllCommand = new QuickCheckCommand(this, true);
@@ -77,7 +77,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			var result = new FlagData(Name, Offset, FieldAddress, _type, PluginLine, ToolTip);
+			var result = new FlagData(Name, Offset, FieldAddress, _type, PluginLine, ToolTip, _setFieldSelection);
 			foreach (var bit in _bits)
 				result.DefineBit(bit.Key, bit.Value.Name, bit.Value.ToolTip);
 			result.Value = _value;
@@ -88,6 +88,22 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			foreach (BitData bit in Bits)
 				bit.Refresh();
+		}
+
+		public override int Size()
+		{
+			switch (_type)
+			{
+				case FlagsType.Flags8:
+					return 1;
+				case FlagsType.Flags16:
+					return 2;
+				case FlagsType.Flags32:
+					return 4;
+				case FlagsType.Flags64:
+					return 8;
+			}
+			return 1;
 		}
 
 		/// <summary>

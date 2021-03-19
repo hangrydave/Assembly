@@ -1,4 +1,5 @@
-﻿using System.Windows.Media;
+﻿using System;
+using System.Windows.Media;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
@@ -13,8 +14,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private Color _value;
 
 		public ColorData(string name, uint offset, long address, bool alpha, bool basic, string dataType, Color value,
-			uint pluginLine, string tooltip)
-			: base(name, offset, address, pluginLine, tooltip)
+			uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
 		{
 			_value = value;
 			_alpha = alpha;
@@ -62,7 +63,9 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			}
 		}
 
-		public override void Accept(IMetaFieldVisitor visitor)
+		public override int Size() => 4;
+
+        public override void Accept(IMetaFieldVisitor visitor)
 		{
 			if (DataType == "color32")
 				visitor.VisitColourInt(this);
@@ -72,7 +75,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new ColorData(Name, Offset, FieldAddress, Alpha, Basic, DataType, Value, PluginLine, ToolTip);
+			return new ColorData(Name, Offset, FieldAddress, Alpha, Basic, DataType, Value, PluginLine, ToolTip, _setFieldSelection);
 		}
 	}
 }

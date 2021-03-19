@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
@@ -11,8 +12,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private TagEntry _value;
 
 		public TagRefData(string name, uint offset, long address, TagHierarchy allTags, Visibility showTagOptions, bool withGroup,
-			uint pluginLine, string tooltip)
-			: base(name, offset, address, pluginLine, tooltip)
+			uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
 		{
 			_allTags = allTags;
 			_withGroup = withGroup;
@@ -71,10 +72,12 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			var result = new TagRefData(Name, Offset, FieldAddress, _allTags, _showTagOptions, _withGroup, PluginLine, ToolTip);
+			var result = new TagRefData(Name, Offset, FieldAddress, _allTags, _showTagOptions, _withGroup, PluginLine, ToolTip, _setFieldSelection);
 			result.Group = _group;
 			result.Value = _value;
 			return result;
 		}
+
+		public override int Size() => -1;
 	}
 }

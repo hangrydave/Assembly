@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 {
@@ -11,5 +12,10 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 		{
 			InitializeComponent();
 		}
-	}
+
+        protected override void OnStyleChanged(Style oldStyle, Style newStyle)
+        {
+            base.OnStyleChanged(oldStyle, newStyle);
+        }
+    }
 }
