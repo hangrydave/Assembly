@@ -27,7 +27,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
         {
             base.OnMouseLeave(e);
             BorderBrush = null;
-            ((ValueField)DataContext).SetFieldSelection();
+            ((ValueField)DataContext).ClearFieldSelection();
         }
 
         /*private void viewValueAs_Click(object sender, RoutedEventArgs e)
