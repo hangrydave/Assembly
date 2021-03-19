@@ -41,6 +41,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 			IStreamManager streamManager, IRTEProvider rteProvider, Trie stringIDTrie)
 		{
 			InitializeComponent();
+			BorderThickness = new System.Windows.Thickness(2, 2, 2, 2);
 
 			_cacheLocation = cacheLocation;
 			_tag = tag;
