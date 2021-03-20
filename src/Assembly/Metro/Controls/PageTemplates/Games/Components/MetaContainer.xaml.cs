@@ -64,7 +64,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 
 
 			// Create Meta Editor Tab
-			_metaEditor = new MetaEditor(_buildInfo, _tag, this, _tags, _cache, _streamManager, _rteProvider, _stringIDTrie, SelectField);
+			_metaEditor = new MetaEditor(_buildInfo, _tag, this, _tags, _cache, _streamManager, _rteProvider, _stringIDTrie);
 			tabMetaEditor.Content = _metaEditor;
 
 			// Create Plugin Editor Tab
@@ -107,11 +107,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 
 			#endregion
 		}
-
-		private void SelectField(uint? offset, int size)
-        {
-			// ooga booga
-        }
 
 		public void GoToRawPluginLine(int pluginLine)
 		{

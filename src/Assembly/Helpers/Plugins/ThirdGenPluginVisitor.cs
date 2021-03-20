@@ -28,6 +28,12 @@ namespace Assembly.Helpers.Plugins
 
 		private Action<uint?, int> _fieldSelected;
 
+		public int BaseSize
+        {
+			private set;
+			get;
+        }
+
 		public bool ShowComments
 		{
 			get { return App.AssemblyStorage.AssemblySettings.PluginsShowComments; }
@@ -57,6 +63,7 @@ namespace Assembly.Helpers.Plugins
 
 		public bool EnterPlugin(int baseSize)
 		{
+			BaseSize = baseSize;
 			return true;
 		}
 
