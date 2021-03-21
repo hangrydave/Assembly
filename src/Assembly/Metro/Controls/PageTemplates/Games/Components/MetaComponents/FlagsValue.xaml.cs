@@ -6,10 +6,10 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 	///     Interaction logic for FlagsValue.xaml
 	/// </summary>
 	public partial class FlagsValue : TagFieldControl
-    {
+	{
 		public FlagsValue()
 		{
 			InitializeComponent();
-        }
-    }
+		}
+	}
 }

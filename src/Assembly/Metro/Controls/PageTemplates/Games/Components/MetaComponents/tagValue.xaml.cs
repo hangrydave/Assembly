@@ -75,8 +75,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
             {
                 cbTagEntry.SelectedValue = searchDialog.SelectedTag;
             }
-		}
-	}
+        }
+    }
 
 	/// <summary>
 	///     Converts a TagGroup to an index in the group list.

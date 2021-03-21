@@ -10,6 +10,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 		public AsciiValue()
 		{
 			InitializeComponent();
-        }
-    }
+		}
+	}
 }

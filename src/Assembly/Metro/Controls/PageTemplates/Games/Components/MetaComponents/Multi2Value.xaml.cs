@@ -6,10 +6,10 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 	///     Interaction logic for Multi2Value.xaml
 	/// </summary>
 	public partial class Multi2Value : TagFieldControl
-    {
+	{
 		public Multi2Value()
 		{
 			InitializeComponent();
-        }
-    }
+		}
+	}
 }
