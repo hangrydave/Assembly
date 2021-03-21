@@ -4,14 +4,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 {
-    public abstract class TagFieldControl : UserControl
+    public class TagFieldControl : UserControl
     {
+        /*public static readonly DependencyProperty NameProperty2 =
+            DependencyProperty.Register(
+                "Name", 
+                typeof(string), 
+                typeof(TagFieldControl));
+
+        public string Name
+        {
+            get { return (string) GetValue(NameProperty); }
+            set { SetValue(NameProperty, value); }
+        }*/
+
+        public TagFieldControl() { }
+
         public override void EndInit()
         {
             base.EndInit();

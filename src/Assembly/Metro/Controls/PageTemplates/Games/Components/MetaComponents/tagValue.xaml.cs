@@ -14,14 +14,13 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 	/// <summary>
 	///     Interaction logic for TagValue.xaml
 	/// </summary>
-	public partial class TagValue : UserControl
+	public partial class TagValue : TagFieldControl
 	{
 		public static RoutedCommand JumpToCommand = new RoutedCommand();
 
 		public TagValue()
 		{
 			InitializeComponent();
-			BorderThickness = new System.Windows.Thickness(2, 2, 2, 2);
 			//hax hax
 			if (cbTagEntry.IsEnabled)
 				if (cbTagEntry.SelectedIndex < 0)
@@ -77,20 +76,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
             {
                 cbTagEntry.SelectedValue = searchDialog.SelectedTag;
             }
-		}
-
-		protected override void OnMouseEnter(MouseEventArgs e)
-		{
-			base.OnMouseEnter(e);
-			BorderBrush = Brushes.Yellow;
-			((ValueField)DataContext).SetFieldSelection();
-		}
-
-		protected override void OnMouseLeave(MouseEventArgs e)
-		{
-			base.OnMouseLeave(e);
-			BorderBrush = null;
-			((ValueField)DataContext).ClearFieldSelection();
 		}
 	}
 

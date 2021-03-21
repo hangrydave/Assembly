@@ -9,26 +9,11 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 	/// <summary>
 	///     Interaction logic for AsciiValue.xaml
 	/// </summary>
-	public partial class AsciiValue : UserControl
+	public partial class AsciiValue : TagFieldControl
 	{
 		public AsciiValue()
 		{
 			InitializeComponent();
-            BorderThickness = new System.Windows.Thickness(2, 2, 2, 2);
-        }
-
-        protected override void OnMouseEnter(MouseEventArgs e)
-        {
-            base.OnMouseEnter(e);
-            BorderBrush = Brushes.Yellow;
-            ((ValueField)DataContext).SetFieldSelection();
-        }
-
-        protected override void OnMouseLeave(MouseEventArgs e)
-        {
-            base.OnMouseLeave(e);
-            BorderBrush = null;
-            ((ValueField)DataContext).SetFieldSelection();
         }
     }
 }

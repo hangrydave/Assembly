@@ -13,12 +13,11 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 	/// <summary>
 	///     Interaction logic for Shader.xaml
 	/// </summary>
-	public partial class Shader : UserControl
+	public partial class Shader : TagFieldControl
 	{
 		public Shader()
 		{
 			InitializeComponent();
-			BorderThickness = new System.Windows.Thickness(2, 2, 2, 2);
 		}
 
 		private void btnDisassemble_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -67,20 +66,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 			{
 				File.Delete(microcodePath);
 			}
-		}
-
-		protected override void OnMouseEnter(MouseEventArgs e)
-		{
-			base.OnMouseEnter(e);
-			BorderBrush = Brushes.Yellow;
-			((ValueField)DataContext).SetFieldSelection();
-		}
-
-		protected override void OnMouseLeave(MouseEventArgs e)
-		{
-			base.OnMouseLeave(e);
-			BorderBrush = null;
-			((ValueField)DataContext).ClearFieldSelection();
 		}
 	}
 }

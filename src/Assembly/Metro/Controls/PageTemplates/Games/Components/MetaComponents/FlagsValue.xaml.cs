@@ -8,26 +8,11 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 	/// <summary>
 	///     Interaction logic for FlagsValue.xaml
 	/// </summary>
-	public partial class FlagsValue : UserControl
-	{
+	public partial class FlagsValue : TagFieldControl
+    {
 		public FlagsValue()
 		{
 			InitializeComponent();
-            BorderThickness = new System.Windows.Thickness(2, 2, 2, 2);
-        }
-
-        protected override void OnMouseEnter(MouseEventArgs e)
-        {
-            base.OnMouseEnter(e);
-            BorderBrush = Brushes.Yellow;
-            ((ValueField)DataContext).SetFieldSelection();
-        }
-
-        protected override void OnMouseLeave(MouseEventArgs e)
-        {
-            base.OnMouseLeave(e);
-            BorderBrush = null;
-            ((ValueField)DataContext).ClearFieldSelection();
         }
     }
 }
