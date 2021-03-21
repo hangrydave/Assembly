@@ -82,7 +82,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return result;
 		}
 
-		public override int Size()
+		public override int DataSize()
 		{
 			switch (_type)
 			{

@@ -71,7 +71,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new RangeInt16Data(Name, Offset, FieldAddress, Type, Min, Max, PluginLine, ToolTip);
 		}
 
-		public override int Size() => 4;
+		public override int DataSize() => 4;
 	}
 
 	/// <summary>
@@ -94,7 +94,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new RangeFloat32Data(Name, Offset, FieldAddress, Type, Min, Max, PluginLine, ToolTip);
 		}
 
-		public override int Size() => 8;
+		public override int DataSize() => 8;
 	}
 
 	/// <summary>
@@ -165,6 +165,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new RangeDegreeData(Name, Offset, FieldAddress, Type, RadianMin, RadianMax, PluginLine, ToolTip);
 		}
 
-		public override int Size() => 8;
+		public override int DataSize() => 8;
 	}
 }

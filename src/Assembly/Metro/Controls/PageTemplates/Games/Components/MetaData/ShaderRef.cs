@@ -60,6 +60,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new ShaderRef(Name, Offset, FieldAddress, Type, Shader, PluginLine, ToolTip);
 		}
 
-		public override int Size() => -1;
+		public override int DataSize() => -1;
 	}
 }

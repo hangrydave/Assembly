@@ -10,7 +10,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 	public class StringData : ValueField
 	{
-		private int _length;
+		private int _size;
 		private StringType _type;
 		private string _value;
 
@@ -18,7 +18,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			: base(name, offset, address, pluginLine, tooltip)
 		{
 			_value = value;
-			_length = size;
+			_size = size;
 			_type = type;
 		}
 
@@ -32,12 +32,12 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			}
 		}
 
-		public new int Length
+		public int Size
 		{
-			get { return _length; }
+			get { return _size; }
 			set
 			{
-				_length = value;
+				_size = value;
 				NotifyPropertyChanged("Size");
 				NotifyPropertyChanged("MaxLength");
 			}
@@ -50,11 +50,11 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 				switch (_type)
 				{
 					case StringType.ASCII:
-						return _length;
+						return _size;
 					case StringType.UTF16:
-						return _length/2;
+						return _size/2;
 					default:
-						return _length;
+						return _size;
 				}
 			}
 		}
@@ -82,9 +82,9 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new StringData(Name, Offset, FieldAddress, _type, _value, _length, PluginLine, ToolTip);
+			return new StringData(Name, Offset, FieldAddress, _type, _value, _size, PluginLine, ToolTip);
 		}
 
-		public override int Size() => Length;
+		public override int DataSize() => Size;
 	}
 }

@@ -78,11 +78,11 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			}
 		}
 
-		public abstract int Size();
+		public abstract int DataSize();
 
 		public void SetFieldSelection()
         {
-			SetFieldSelectionAction(FieldAddress, Size());
+			SetFieldSelectionAction(FieldAddress, DataSize());
         }
 
 		public void ClearFieldSelection()
