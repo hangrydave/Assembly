@@ -11,8 +11,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private string _type;
 		private T _min, _max;
 
-		public RangeNumberData(string name, uint offset, long address, string type, T min, T max, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
+		public RangeNumberData(string name, uint offset, long address, string type, T min, T max, uint pluginLine, string tooltip)
+			: base(name, offset, address, pluginLine, tooltip)
 		{
 			_type = type;
 			_min = min;
@@ -56,8 +56,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 	/// </summary>
 	public class RangeInt16Data : RangeNumberData<short>
 	{
-		public RangeInt16Data(string name, uint offset, long address, string type, short min, short max, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, min, max, pluginLine, tooltip, fieldSelected)
+		public RangeInt16Data(string name, uint offset, long address, string type, short min, short max, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, min, max, pluginLine, tooltip)
 		{
 		}
 
@@ -68,7 +68,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new RangeInt16Data(Name, Offset, FieldAddress, Type, Min, Max, PluginLine, ToolTip, _setFieldSelection);
+			return new RangeInt16Data(Name, Offset, FieldAddress, Type, Min, Max, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 4;
@@ -79,8 +79,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 	/// </summary>
 	public class RangeFloat32Data : RangeNumberData<float>
 	{
-		public RangeFloat32Data(string name, uint offset, long address, string type, float min, float max, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, min, max, pluginLine, tooltip, fieldSelected)
+		public RangeFloat32Data(string name, uint offset, long address, string type, float min, float max, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, min, max, pluginLine, tooltip)
 		{
 		}
 
@@ -91,7 +91,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new RangeFloat32Data(Name, Offset, FieldAddress, Type, Min, Max, PluginLine, ToolTip, _setFieldSelection);
+			return new RangeFloat32Data(Name, Offset, FieldAddress, Type, Min, Max, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 8;
@@ -105,8 +105,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private string _type;
 		private float _radianmin, _radianmax;
 
-		public RangeDegreeData(string name, uint offset, long address, string type, float min, float max, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, min, max, pluginLine, tooltip, fieldSelected)
+		public RangeDegreeData(string name, uint offset, long address, string type, float min, float max, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, min, max, pluginLine, tooltip)
 		{
 			_type = type;
 			_radianmin = min;
@@ -162,7 +162,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new RangeDegreeData(Name, Offset, FieldAddress, Type, RadianMin, RadianMax, PluginLine, ToolTip, _setFieldSelection);
+			return new RangeDegreeData(Name, Offset, FieldAddress, Type, RadianMin, RadianMax, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 8;

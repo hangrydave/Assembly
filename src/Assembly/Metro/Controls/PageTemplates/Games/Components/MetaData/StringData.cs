@@ -14,8 +14,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private StringType _type;
 		private string _value;
 
-		public StringData(string name, uint offset, long address, StringType type, string value, int size, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
+		public StringData(string name, uint offset, long address, StringType type, string value, int size, uint pluginLine, string tooltip)
+			: base(name, offset, address, pluginLine, tooltip)
 		{
 			_value = value;
 			_length = size;
@@ -82,7 +82,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new StringData(Name, Offset, FieldAddress, _type, _value, _length, PluginLine, ToolTip, _setFieldSelection);
+			return new StringData(Name, Offset, FieldAddress, _type, _value, _length, PluginLine, ToolTip);
 		}
 
 		public override int Size() => Length;

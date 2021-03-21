@@ -17,8 +17,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private EnumType _type;
 		private int _value;
 
-		public EnumData(string name, uint offset, long address, EnumType type, int value, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
+		public EnumData(string name, uint offset, long address, EnumType type, int value, uint pluginLine, string tooltip)
+			: base(name, offset, address, pluginLine, tooltip)
 		{
 			_type = type;
 			_value = value;
@@ -71,7 +71,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			var result = new EnumData(Name, Offset, FieldAddress, _type, _value, PluginLine, ToolTip, _setFieldSelection);
+			var result = new EnumData(Name, Offset, FieldAddress, _type, _value, PluginLine, ToolTip);
 			foreach (EnumValue option in Values)
 			{
 				var copiedValue = new EnumValue(option.Name, option.Value, option.ToolTip);

@@ -7,8 +7,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private string _type;
 		internal T _a, _b;
 		
-		public Multi2Data(string name, uint offset, long address, string type, T a, T b, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
+		public Multi2Data(string name, uint offset, long address, string type, T a, T b, uint pluginLine, string tooltip)
+			: base(name, offset, address, pluginLine, tooltip)
 		{
 			_type = type;
 			_a = a;
@@ -52,8 +52,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private string _type;
 		internal T _a, _b, _c;
 
-		public Multi3Data(string name, uint offset, long address, string type, T a, T b, T c, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
+		public Multi3Data(string name, uint offset, long address, string type, T a, T b, T c, uint pluginLine, string tooltip)
+			: base(name, offset, address, pluginLine, tooltip)
 		{
 			_type = type;
 			_a = a;
@@ -108,8 +108,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private string _type;
 		internal T _a, _b, _c, _d;
 
-		public Multi4Data(string name, uint offset, long address, string type, T a, T b, T c, T d, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
+		public Multi4Data(string name, uint offset, long address, string type, T a, T b, T c, T d, uint pluginLine, string tooltip)
+			: base(name, offset, address, pluginLine, tooltip)
 		{
 			_type = type;
 			_a = a;
@@ -172,8 +172,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 	public class Degree2Data : Multi2Data<float>
 	{
-		public Degree2Data(string name, uint offset, long address, string type, float a, float b, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, a, b, pluginLine, tooltip, fieldSelected)
+		public Degree2Data(string name, uint offset, long address, string type, float a, float b, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, a, b, pluginLine, tooltip)
 		{
 		}
 
@@ -226,7 +226,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		
 		public override MetaField CloneValue()
 		{
-			return new Degree2Data(Name, Offset, FieldAddress, Type, RadianA, RadianB, PluginLine, ToolTip, _setFieldSelection);
+			return new Degree2Data(Name, Offset, FieldAddress, Type, RadianA, RadianB, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 16;
@@ -234,8 +234,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 	public class Degree3Data : Multi3Data<float>
 	{
-		public Degree3Data(string name, uint offset, long address, string type, float a, float b, float c, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, a, b, c, pluginLine, tooltip, fieldSelected)
+		public Degree3Data(string name, uint offset, long address, string type, float a, float b, float c, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, a, b, c, pluginLine, tooltip)
 		{
 		}
 
@@ -309,7 +309,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new Degree3Data(Name, Offset, FieldAddress, Type, RadianA, RadianB, RadianC, PluginLine, ToolTip, _setFieldSelection);
+			return new Degree3Data(Name, Offset, FieldAddress, Type, RadianA, RadianB, RadianC, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 24;
@@ -317,8 +317,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 	public class Vector2Data : Multi2Data<float>
 	{
-		public Vector2Data(string name, uint offset, long address, string type, float a, float b, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, a, b, pluginLine, tooltip, fieldSelected)
+		public Vector2Data(string name, uint offset, long address, string type, float a, float b, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, a, b, pluginLine, tooltip)
 		{
 		}
 
@@ -329,7 +329,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new Vector2Data(Name, Offset, FieldAddress, Type, A, B, PluginLine, ToolTip, _setFieldSelection);
+			return new Vector2Data(Name, Offset, FieldAddress, Type, A, B, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 8;
@@ -337,8 +337,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 	public class Vector3Data : Multi3Data<float>
 	{
-		public Vector3Data(string name, uint offset, long address, string type, float a, float b, float c, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, a, b, c, pluginLine, tooltip, fieldSelected)
+		public Vector3Data(string name, uint offset, long address, string type, float a, float b, float c, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, a, b, c, pluginLine, tooltip)
 		{
 		}
 
@@ -349,7 +349,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new Vector3Data(Name, Offset, FieldAddress, Type, A, B, C, PluginLine, ToolTip, _setFieldSelection);
+			return new Vector3Data(Name, Offset, FieldAddress, Type, A, B, C, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 12;
@@ -357,8 +357,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 	public class Vector4Data : Multi4Data<float>
 	{
-		public Vector4Data(string name, uint offset, long address, string type, float a, float b, float c, float d, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, a, b, c, d, pluginLine, tooltip, fieldSelected)
+		public Vector4Data(string name, uint offset, long address, string type, float a, float b, float c, float d, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, a, b, c, d, pluginLine, tooltip)
 		{
 		}
 
@@ -369,7 +369,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new Vector4Data(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip, _setFieldSelection);
+			return new Vector4Data(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 32;
@@ -377,8 +377,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 	public class Point2Data : Multi2Data<float>
 	{
-		public Point2Data(string name, uint offset, long address, string type, float a, float b, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, a, b, pluginLine, tooltip, fieldSelected)
+		public Point2Data(string name, uint offset, long address, string type, float a, float b, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, a, b, pluginLine, tooltip)
 		{
 		}
 
@@ -389,15 +389,15 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new Point2Data(Name, Offset, FieldAddress, Type, A, B, PluginLine, ToolTip, _setFieldSelection);
+			return new Point2Data(Name, Offset, FieldAddress, Type, A, B, PluginLine, ToolTip);
 		}
 		public override int Size() => 8;
 	}
 
 	public class Point3Data : Multi3Data<float>
 	{
-		public Point3Data(string name, uint offset, long address, string type, float a, float b, float c, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, a, b, c, pluginLine, tooltip, fieldSelected)
+		public Point3Data(string name, uint offset, long address, string type, float a, float b, float c, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, a, b, c, pluginLine, tooltip)
 		{
 		}
 
@@ -408,7 +408,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new Point3Data(Name, Offset, FieldAddress, Type, A, B, C, PluginLine, ToolTip, _setFieldSelection);
+			return new Point3Data(Name, Offset, FieldAddress, Type, A, B, C, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 12;
@@ -416,8 +416,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 	public class Plane2Data : Multi3Data<float>
 	{
-		public Plane2Data(string name, uint offset, long address, string type, float a, float b, float c, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, a, b, c, pluginLine, tooltip, fieldSelected)
+		public Plane2Data(string name, uint offset, long address, string type, float a, float b, float c, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, a, b, c, pluginLine, tooltip)
 		{
 		}
 
@@ -428,7 +428,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new Plane2Data(Name, Offset, FieldAddress, Type, A, B, C, PluginLine, ToolTip, _setFieldSelection);
+			return new Plane2Data(Name, Offset, FieldAddress, Type, A, B, C, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 12;
@@ -436,8 +436,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 	public class Plane3Data : Multi4Data<float>
 	{
-		public Plane3Data(string name, uint offset, long address, string type, float a, float b, float c, float d, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, a, b, c, d, pluginLine, tooltip, fieldSelected)
+		public Plane3Data(string name, uint offset, long address, string type, float a, float b, float c, float d, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, a, b, c, d, pluginLine, tooltip)
 		{
 		}
 
@@ -448,7 +448,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new Plane3Data(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip, _setFieldSelection);
+			return new Plane3Data(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 16;
@@ -456,8 +456,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 	public class RectangleData : Multi4Data<short>
 	{
-		public RectangleData(string name, uint offset, long address, string type, short a, short b, short c, short d, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, a, b, c, d, pluginLine, tooltip, fieldSelected)
+		public RectangleData(string name, uint offset, long address, string type, short a, short b, short c, short d, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, a, b, c, d, pluginLine, tooltip)
 		{
 		}
 
@@ -468,7 +468,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new RectangleData(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip, _setFieldSelection);
+			return new RectangleData(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 8;
@@ -476,8 +476,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 	public class Quaternion16Data : Multi4Data<short>
 	{
-		public Quaternion16Data(string name, uint offset, long address, string type, short a, short b, short c, short d, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, a, b, c, d, pluginLine, tooltip, fieldSelected)
+		public Quaternion16Data(string name, uint offset, long address, string type, short a, short b, short c, short d, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, a, b, c, d, pluginLine, tooltip)
 		{
 		}
 
@@ -488,7 +488,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new Quaternion16Data(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip, _setFieldSelection);
+			return new Quaternion16Data(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 8;
@@ -496,8 +496,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 	public class Point16Data : Multi2Data<short>
 	{
-		public Point16Data(string name, uint offset, long address, string type, short a, short b, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, type, a, b, pluginLine, tooltip, fieldSelected)
+		public Point16Data(string name, uint offset, long address, string type, short a, short b, uint pluginLine, string tooltip)
+			: base(name, offset, address, type, a, b, pluginLine, tooltip)
 		{
 		}
 
@@ -508,7 +508,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new Point16Data(Name, Offset, FieldAddress, Type, A, B, PluginLine, ToolTip, _setFieldSelection);
+			return new Point16Data(Name, Offset, FieldAddress, Type, A, B, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 4;

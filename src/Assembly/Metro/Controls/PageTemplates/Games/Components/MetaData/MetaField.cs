@@ -1,4 +1,6 @@
-﻿namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
+﻿using System;
+
+namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
 	/// <summary>
 	///     Base class for meta field data.
@@ -33,5 +35,7 @@
 		/// </summary>
 		/// <returns>The cloned field with a value identical to the source field.</returns>
 		public abstract MetaField CloneValue();
+
+		public Action<long?, int> SetFieldSelectionAction { get; set; }
 	}
 }

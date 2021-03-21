@@ -10,8 +10,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private ushort _salt;
 		private ushort _index;
 
-		public DatumData(string name, uint offset, long address, ushort salt, ushort index, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
-			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
+		public DatumData(string name, uint offset, long address, ushort salt, ushort index, uint pluginLine, string tooltip)
+			: base(name, offset, address, pluginLine, tooltip)
 		{
 			_salt = salt;
 			_index = index;
@@ -44,7 +44,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public override MetaField CloneValue()
 		{
-			return new DatumData(Name, Offset, FieldAddress, Salt, Index, PluginLine, ToolTip, _setFieldSelection);
+			return new DatumData(Name, Offset, FieldAddress, Salt, Index, PluginLine, ToolTip);
 		}
 
 		public override int Size() => 4;
