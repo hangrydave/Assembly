@@ -18,13 +18,13 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
         public override void EndInit()
         {
             base.EndInit();
-            BorderThickness = new System.Windows.Thickness(2, 2, 2, 2);
+            BorderThickness = new System.Windows.Thickness(1, 1, 1, 1);
         }
 
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
-            BorderBrush = Brushes.Yellow;
+            BorderBrush = Brushes.LightSkyBlue;
             ((ValueField)DataContext).SetFieldSelection();
         }
 
