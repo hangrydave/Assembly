@@ -201,11 +201,11 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			switch (field.Type)
 			{
 				case StringType.ASCII:
-					field.Value = _reader.ReadAscii(field.Length);
+					field.Value = _reader.ReadAscii(field.Size);
 					break;
 
 				case StringType.UTF16:
-					field.Value = _reader.ReadUTF16(field.Length);
+					field.Value = _reader.ReadUTF16(field.Size);
 					break;
 			}
 		}

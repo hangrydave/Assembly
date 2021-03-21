@@ -113,6 +113,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new RawData(Name, Offset, FieldAddress, _value, _length, PluginLine, ToolTip, _metaArea);
 		}
 
-		public override int Size() => Length;
+		public override int DataSize() => Length;
 	}
 }

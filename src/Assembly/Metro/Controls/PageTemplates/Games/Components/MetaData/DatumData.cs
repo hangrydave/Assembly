@@ -47,6 +47,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new DatumData(Name, Offset, FieldAddress, Salt, Index, PluginLine, ToolTip);
 		}
 
-		public override int Size() => 4;
+		public override int DataSize() => 4;
 	}
 }
