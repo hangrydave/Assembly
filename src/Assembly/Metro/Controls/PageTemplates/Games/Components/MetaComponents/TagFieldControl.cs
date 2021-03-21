@@ -13,18 +13,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 {
     public class TagFieldControl : UserControl
     {
-        /*public static readonly DependencyProperty NameProperty2 =
-            DependencyProperty.Register(
-                "Name", 
-                typeof(string), 
-                typeof(TagFieldControl));
-
-        public string Name
-        {
-            get { return (string) GetValue(NameProperty); }
-            set { SetValue(NameProperty, value); }
-        }*/
-
         public TagFieldControl() { }
 
         public override void EndInit()

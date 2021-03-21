@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
 using Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents

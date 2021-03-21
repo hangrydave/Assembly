@@ -7,7 +7,6 @@ using System.Windows.Data;
 using System.Windows.Input;
 using Assembly.Metro.Dialogs.ControlDialogs;
 using Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData;
-using System.Windows.Media;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 {

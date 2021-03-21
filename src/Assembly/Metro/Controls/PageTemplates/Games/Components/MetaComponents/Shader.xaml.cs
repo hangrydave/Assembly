@@ -1,8 +1,6 @@
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
 using Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData;
 using Assembly.Metro.Dialogs;
 using Blamite.Blam.Shaders;
