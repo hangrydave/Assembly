@@ -12,9 +12,9 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private string _name;
 		private uint _offset;
 		private string _tooltip;
-		protected Action<uint?, int> _setFieldSelection;
+		protected Action<long?, int> _setFieldSelection;
 
-		public ValueField(string name, uint offset, long address, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public ValueField(string name, uint offset, long address, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 		{
 			_name = name;
 			_offset = offset;
@@ -84,7 +84,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 
 		public void SetFieldSelection()
         {
-			_setFieldSelection(Offset, Size());
+			_setFieldSelection(FieldAddress, Size());
         }
 
 		public void ClearFieldSelection()

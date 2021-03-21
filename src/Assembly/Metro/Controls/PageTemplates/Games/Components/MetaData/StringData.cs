@@ -14,7 +14,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private StringType _type;
 		private string _value;
 
-		public StringData(string name, uint offset, long address, StringType type, string value, int size, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public StringData(string name, uint offset, long address, StringType type, string value, int size, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
 		{
 			_value = value;

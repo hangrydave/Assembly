@@ -178,7 +178,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 			hexView.Init(metaReader.TagBlockDict, _cache.MetaArea, streamManager, baseOffset, _pluginVisitor.BaseSize);
 		}
 
-		private void SetFieldSelection(uint? offset, int size)
+		private void SetFieldSelection(long? offset, int size)
 		{
 			hexView.SetFieldSelection(offset, size);
 		}

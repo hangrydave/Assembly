@@ -11,7 +11,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private string _type;
 		private T _min, _max;
 
-		public RangeNumberData(string name, uint offset, long address, string type, T min, T max, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public RangeNumberData(string name, uint offset, long address, string type, T min, T max, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
 		{
 			_type = type;
@@ -56,7 +56,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 	/// </summary>
 	public class RangeInt16Data : RangeNumberData<short>
 	{
-		public RangeInt16Data(string name, uint offset, long address, string type, short min, short max, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public RangeInt16Data(string name, uint offset, long address, string type, short min, short max, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, type, min, max, pluginLine, tooltip, fieldSelected)
 		{
 		}
@@ -79,7 +79,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 	/// </summary>
 	public class RangeFloat32Data : RangeNumberData<float>
 	{
-		public RangeFloat32Data(string name, uint offset, long address, string type, float min, float max, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public RangeFloat32Data(string name, uint offset, long address, string type, float min, float max, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, type, min, max, pluginLine, tooltip, fieldSelected)
 		{
 		}
@@ -105,7 +105,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private string _type;
 		private float _radianmin, _radianmax;
 
-		public RangeDegreeData(string name, uint offset, long address, string type, float min, float max, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public RangeDegreeData(string name, uint offset, long address, string type, float min, float max, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, type, min, max, pluginLine, tooltip, fieldSelected)
 		{
 			_type = type;

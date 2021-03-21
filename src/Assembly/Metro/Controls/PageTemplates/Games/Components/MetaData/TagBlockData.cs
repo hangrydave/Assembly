@@ -99,7 +99,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private double _width = MinWidth;
 
 		public TagBlockData(string name, uint offset, long address, uint elementSize, int align,
-			bool sort, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected, FileSegmentGroup metaArea)
+			bool sort, uint pluginLine, string tooltip, Action<long?, int> fieldSelected, FileSegmentGroup metaArea)
 			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
 		{
 			_elementSize = elementSize;

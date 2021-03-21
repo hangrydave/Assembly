@@ -10,7 +10,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private ushort _salt;
 		private ushort _index;
 
-		public DatumData(string name, uint offset, long address, ushort salt, ushort index, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public DatumData(string name, uint offset, long address, ushort salt, ushort index, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
 		{
 			_salt = salt;

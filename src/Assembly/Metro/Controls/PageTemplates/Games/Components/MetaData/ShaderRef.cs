@@ -12,7 +12,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private IShader _shader;
 		private string _dbString;
 
-		public ShaderRef(string name, uint offset, long address, ShaderType type, IShader value, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public ShaderRef(string name, uint offset, long address, ShaderType type, IShader value, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
 		{
 			Type = type;

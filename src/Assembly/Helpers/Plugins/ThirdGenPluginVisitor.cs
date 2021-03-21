@@ -26,7 +26,7 @@ namespace Assembly.Helpers.Plugins
 		private EnumData _currentEnum;
 		private TagBlockData _currentTagBlock;
 
-		private Action<uint?, int> _fieldSelected;
+		private Action<long?, int> _fieldSelected;
 
 		public int BaseSize
         {
@@ -39,7 +39,7 @@ namespace Assembly.Helpers.Plugins
 			get { return App.AssemblyStorage.AssemblySettings.PluginsShowComments; }
 		}
 		
-		public ThirdGenPluginVisitor(TagHierarchy tags, Trie stringIDTrie, FileSegmentGroup metaArea, bool showInvisibles, Action<uint?, int> fieldSelected)
+		public ThirdGenPluginVisitor(TagHierarchy tags, Trie stringIDTrie, FileSegmentGroup metaArea, bool showInvisibles, Action<long?, int> fieldSelected)
 		{
 			_tags = tags;
 			_stringIDTrie = stringIDTrie;

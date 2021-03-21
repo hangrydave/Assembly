@@ -10,79 +10,111 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
     /// </summary>
     public partial class HexView : UserControl
     {
+        private FileSegmentGroup _metaArea;
+        private SortedDictionary<long, int> _addressToRowDict = new SortedDictionary<long, int>();
+
         private List<List<string>> _data;
         private int _selectedRow;
         private int _selectedCol;
-        private uint? _selectedOffset;
+        private long? _selectedOffset;
         private int _selectedSize;
-
-        private long _baseOffset;
-        private long _basePointer;
 
         public void Init(SortedDictionary<long, int> tagBlockDict, FileSegmentGroup metaArea, IStreamManager streamManager, long baseOffset, int baseSize)
         {
-            _baseOffset = baseOffset;
-            _basePointer = metaArea.OffsetToPointer((int) baseOffset);
-
-            int rowCount = baseSize / 16;
-            int extraBytes = baseSize % 16;
-            if (extraBytes > 0)
-                rowCount++;
-
-            // need some way to map locations in the ui to actual data
+            _metaArea = metaArea;
 
             int row = 0;
             int col = 0;
 
-            _data = new List<List<string>>(rowCount);
+            _data = new List<List<string>>();
             _data.Add(new List<string>(16));
 
+            tagBlockDict[baseOffset] = baseSize;
+
             IReader reader = streamManager.OpenRead();
-            reader.SeekTo(baseOffset);
-
-            // todo: do speed test between this and reader.ReadBlock
-            for (int i = 0; i < baseSize; i++)
+            foreach (long key in tagBlockDict.Keys)
             {
-                byte b = reader.ReadByte();
-                string s = b.ToString("X2");
-                _data[row].Add(s);
+                reader.SeekTo(key);
 
-                col++;
-                if (col == 16)
+                _addressToRowDict[key] = row;
+                col = 0;
+
+                int size = tagBlockDict[key];
+                byte[] buffer = reader.ReadBlock(size);
+
+                for (int i = 0; i < size; i++)
                 {
-                    col = 0;
-                    row++;
-                    _data.Add(new List<string>(16));
+                    byte b = buffer[i];
+                    ProcessByte(ref row, ref col, b);
                 }
+
+                row++;
+                _data.Add(new List<string>(new string[] { "--", "--", "--", "--", "--", "--", "--", "--", "--", "--", "--", "--", "--", "--", "--", "--" }));
+                row++;
+                _data.Add(new List<string>(16));
             }
 
             InitializeComponent();
             hexGrid.ItemsSource = _data;
         }
 
-        public void SetFieldSelection(uint? offset, int size)
+        private void ProcessByte(ref int row, ref int col, byte b)
         {
-            if (offset == null)
+            string s = b.ToString("X2");
+            _data[row].Add(s);
+
+            col++;
+            if (col == 16)
+            {
+                col = 0;
+                row++;
+                _data.Add(new List<string>(16));
+            }
+        }
+
+        public void SetFieldSelection(long? address, int size)
+        {
+            if (address == null || _selectedOffset != null)
             {
                 ScrollToAndHighlightSelection(null);
+                if (address == null)
+                    return;
+            }
+
+            if (address.HasValue)
+            {
+                _selectedOffset = _metaArea.PointerToOffset(address.Value);
+            }
+            else
+            {
+                _selectedOffset = null;
+                _selectedSize = 0;
                 return;
             }
 
-            if (_selectedOffset != null)
-            {
-                ScrollToAndHighlightSelection(null);
-            }
-
-            _selectedOffset = offset;
             _selectedSize = size;
 
-            if (!offset.HasValue)
-                return;
+            long baseOffset = GetBaseOffset(_selectedOffset.Value);
+            int baseRow = _addressToRowDict[baseOffset];
 
-            _selectedRow = ((int) offset.Value) / 16;
-            _selectedCol = ((int) offset.Value) % 16;
+            int fieldOffset = (int) (_selectedOffset.Value - baseOffset);
+            _selectedRow = baseRow + (fieldOffset / 16);
+            _selectedCol = fieldOffset % 16;
 
             ScrollToAndHighlightSelection(Brushes.LightBlue);
+        }
+
+        private long GetBaseOffset(long offset)
+        {
+            long baseOffset = -1;
+            foreach (long key in _addressToRowDict.Keys)
+            {
+                if (offset < key)
+                    break;
+
+                baseOffset = key;
+            }
+            return baseOffset;
         }
 
         private void ScrollToAndHighlightSelection(Brush brush)

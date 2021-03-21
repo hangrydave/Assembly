@@ -15,7 +15,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private int _length;
 		internal FileSegmentGroup _metaArea;
 
-		public RawData(string name, uint offset, long address, string value, int length, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected, FileSegmentGroup metaArea)
+		public RawData(string name, uint offset, long address, string value, int length, uint pluginLine, string tooltip, Action<long?, int> fieldSelected, FileSegmentGroup metaArea)
 			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
 		{
 			_value = value;
@@ -23,7 +23,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			_metaArea = metaArea;
 		}
 
-		public RawData(string name, uint offset, string format, long address, string value, int length, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected, FileSegmentGroup metaArea)
+		public RawData(string name, uint offset, string format, long address, string value, int length, uint pluginLine, string tooltip, Action<long?, int> fieldSelected, FileSegmentGroup metaArea)
 			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
 		{
 			_value = value;

@@ -11,7 +11,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		private string _type;
 		private T _value;
 
-		public NumberData(string name, uint offset, long address, string type, T value, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public NumberData(string name, uint offset, long address, string type, T value, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, pluginLine, tooltip, fieldSelected)
 		{
 			_type = type;
@@ -44,7 +44,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 	/// </summary>
 	public class Uint8Data : NumberData<byte>
 	{
-		public Uint8Data(string name, uint offset, long address, string type, byte value, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public Uint8Data(string name, uint offset, long address, string type, byte value, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, type, value, pluginLine, tooltip, fieldSelected)
 		{
 		}
@@ -67,7 +67,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 	/// </summary>
 	public class Int8Data : NumberData<sbyte>
 	{
-		public Int8Data(string name, uint offset, long address, string type, sbyte value, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public Int8Data(string name, uint offset, long address, string type, sbyte value, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, type, value, pluginLine, tooltip, fieldSelected)
 		{
 		}
@@ -90,7 +90,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 	/// </summary>
 	public class Uint16Data : NumberData<ushort>
 	{
-		public Uint16Data(string name, uint offset, long address, string type, ushort value, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public Uint16Data(string name, uint offset, long address, string type, ushort value, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, type, value, pluginLine, tooltip, fieldSelected)
 		{
 		}
@@ -113,7 +113,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 	/// </summary>
 	public class Int16Data : NumberData<short>
 	{
-		public Int16Data(string name, uint offset, long address, string type, short value, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public Int16Data(string name, uint offset, long address, string type, short value, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, type, value, pluginLine, tooltip, fieldSelected)
 		{
 		}
@@ -136,7 +136,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 	/// </summary>
 	public class Uint32Data : NumberData<uint>
 	{
-		public Uint32Data(string name, uint offset, long address, string type, uint value, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public Uint32Data(string name, uint offset, long address, string type, uint value, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, type, value, pluginLine, tooltip, fieldSelected)
 		{
 		}
@@ -159,7 +159,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 	/// </summary>
 	public class Int32Data : NumberData<int>
 	{
-		public Int32Data(string name, uint offset, long address, string type, int value, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public Int32Data(string name, uint offset, long address, string type, int value, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, type, value, pluginLine, tooltip, fieldSelected)
 		{
 		}
@@ -182,7 +182,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 	/// </summary>
 	public class Uint64Data : NumberData<ulong>
 	{
-		public Uint64Data(string name, uint offset, long address, string type, ulong value, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public Uint64Data(string name, uint offset, long address, string type, ulong value, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, type, value, pluginLine, tooltip, fieldSelected)
 		{
 		}
@@ -205,7 +205,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 	/// </summary>
 	public class Int64Data : NumberData<long>
 	{
-		public Int64Data(string name, uint offset, long address, string type, long value, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public Int64Data(string name, uint offset, long address, string type, long value, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, type, value, pluginLine, tooltip, fieldSelected)
 		{
 		}
@@ -228,7 +228,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 	/// </summary>
 	public class Float32Data : NumberData<float>
 	{
-		public Float32Data(string name, uint offset, long address, string type, float value, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public Float32Data(string name, uint offset, long address, string type, float value, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, type, value, pluginLine, tooltip, fieldSelected)
 		{
 		}
@@ -253,7 +253,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 	{
 		private float _radian;
 
-		public DegreeData(string name, uint offset, long address, string type, float radian, uint pluginLine, string tooltip, Action<uint?, int> fieldSelected)
+		public DegreeData(string name, uint offset, long address, string type, float radian, uint pluginLine, string tooltip, Action<long?, int> fieldSelected)
 			: base(name, offset, address, type, radian, pluginLine, tooltip, fieldSelected)
 		{
 			_radian = radian;
