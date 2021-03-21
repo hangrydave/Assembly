@@ -1,18 +1,15 @@
-﻿using Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
+﻿using System.Windows.Controls;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 {
 	/// <summary>
 	///     Interaction logic for Enumeration.xaml
 	/// </summary>
-	public partial class Enumeration : TagFieldControl
+	public partial class Enumeration : UserControl
 	{
 		public Enumeration()
 		{
 			InitializeComponent();
-        }
-    }
+		}
+	}
 }
