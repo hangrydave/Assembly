@@ -16,12 +16,20 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
         private uint? _selectedOffset;
         private int _selectedSize;
 
-        public void Init(IStreamManager streamManager, long baseOffset, int baseSize)
+        private long _baseOffset;
+        private long _basePointer;
+
+        public void Init(SortedDictionary<long, int> tagBlockDict, FileSegmentGroup metaArea, IStreamManager streamManager, long baseOffset, int baseSize)
         {
+            _baseOffset = baseOffset;
+            _basePointer = metaArea.OffsetToPointer((int) baseOffset);
+
             int rowCount = baseSize / 16;
             int extraBytes = baseSize % 16;
             if (extraBytes > 0)
                 rowCount++;
+
+            // need some way to map locations in the ui to actual data
 
             int row = 0;
             int col = 0;
@@ -32,6 +40,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
             IReader reader = streamManager.OpenRead();
             reader.SeekTo(baseOffset);
 
+            // todo: do speed test between this and reader.ReadBlock
             for (int i = 0; i < baseSize; i++)
             {
                 byte b = reader.ReadByte();
@@ -90,7 +99,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 
                 int startingCol = 0;
                 int endingCol = 0;
-                GetStartingAndEndingCol(row, ref startingCol, ref endingCol);
+                GetStartingAndEndingCol(row, rowCount, leftovers, ref startingCol, ref endingCol);
 
                 for (int col = startingCol; col < endingCol; col++)
                 {
@@ -106,25 +115,25 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
             // 30 is the height of the rows, so stick the selection in roughly the middle of the screen
             double offset = (30 * _selectedRow) - scrollViewer.ViewportHeight / 2;
             scrollViewer.ScrollToVerticalOffset(offset);
+        }
 
-            void GetStartingAndEndingCol(int row, ref int startingCol, ref int endingCol)
+        void GetStartingAndEndingCol(int row, int rowCount, int leftovers, ref int startingCol, ref int endingCol)
+        {
+            if (row == 0)
             {
-                if (row == 0)
-                {
-                    startingCol = _selectedCol;
-                    if (rowCount == 1)
-                        endingCol = startingCol + _selectedSize;
-                    else
-                        endingCol = 16;
-                }
+                startingCol = _selectedCol;
+                if (rowCount == 1)
+                    endingCol = startingCol + _selectedSize;
                 else
-                {
-                    startingCol = 0;
-                    if (row < rowCount - 1)
-                        endingCol = 16;
-                    else
-                        endingCol = _selectedSize;
-                }
+                    endingCol = 16;
+            }
+            else
+            {
+                startingCol = 0;
+                if (row < rowCount - 1)
+                    endingCol = 16;
+                else
+                    endingCol = leftovers;
             }
         }
     }

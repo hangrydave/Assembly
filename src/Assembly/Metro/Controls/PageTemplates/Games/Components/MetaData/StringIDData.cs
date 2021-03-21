@@ -45,6 +45,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new StringIDData(Name, Offset, FieldAddress, _value, _autocompleteTrie, PluginLine, ToolTip, _setFieldSelection);
 		}
 
-		public override int Size() => -1;
+		public override int Size() => 4;
 	}
 }

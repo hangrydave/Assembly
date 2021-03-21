@@ -78,6 +78,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return result;
 		}
 
-		public override int Size() => -1;
+		public override int Size() => 16;
 	}
 }

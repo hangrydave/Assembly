@@ -290,6 +290,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new DegreeData(Name, Offset, FieldAddress, Type, _radian, PluginLine, ToolTip, _setFieldSelection);
 		}
 
-		public override int Size() => -1;
+		public override int Size() => 32;
 	}
 }

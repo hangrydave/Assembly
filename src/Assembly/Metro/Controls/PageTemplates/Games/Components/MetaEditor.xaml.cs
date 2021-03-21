@@ -175,7 +175,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 					comboSearchResults.SelectedIndex = searchSelectedItem;
 			}
 
-			hexView.Init(streamManager, baseOffset, _pluginVisitor.BaseSize);
+			hexView.Init(metaReader.TagBlockDict, _cache.MetaArea, streamManager, baseOffset, _pluginVisitor.BaseSize);
 		}
 
 		private void SetFieldSelection(uint? offset, int size)

@@ -229,7 +229,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new Degree2Data(Name, Offset, FieldAddress, Type, RadianA, RadianB, PluginLine, ToolTip, _setFieldSelection);
 		}
 
-		public override int Size() => -1;
+		public override int Size() => 16;
     }
 
 	public class Degree3Data : Multi3Data<float>
@@ -312,7 +312,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new Degree3Data(Name, Offset, FieldAddress, Type, RadianA, RadianB, RadianC, PluginLine, ToolTip, _setFieldSelection);
 		}
 
-		public override int Size() => -1;
+		public override int Size() => 24;
 	}
 
 	public class Vector2Data : Multi2Data<float>
@@ -372,7 +372,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new Vector4Data(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip, _setFieldSelection);
 		}
 
-		public override int Size() => -1;
+		public override int Size() => 32;
 	}
 
 	public class Point2Data : Multi2Data<float>
@@ -471,7 +471,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new RectangleData(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip, _setFieldSelection);
 		}
 
-		public override int Size() => -1;
+		public override int Size() => 8;
     }
 
 	public class Quaternion16Data : Multi4Data<short>
@@ -491,7 +491,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new Quaternion16Data(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip, _setFieldSelection);
 		}
 
-		public override int Size() => -1;
+		public override int Size() => 8;
 	}
 
 	public class Point16Data : Multi2Data<short>
@@ -511,7 +511,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new Point16Data(Name, Offset, FieldAddress, Type, A, B, PluginLine, ToolTip, _setFieldSelection);
 		}
 
-		public override int Size() => -1;
+		public override int Size() => 4;
 	}
 
 }

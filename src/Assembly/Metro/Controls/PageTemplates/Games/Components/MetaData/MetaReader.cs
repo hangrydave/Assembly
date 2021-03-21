@@ -430,6 +430,12 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			field.B = _reader.ReadInt16();
 		}
 
+		public SortedDictionary<long, int> TagBlockDict
+		{
+			private set;
+			get;
+		} = new SortedDictionary<long, int>();
+
 		public void VisitTagBlock(TagBlockData field)
 		{
 			SeekToOffset(field.Offset);
@@ -451,6 +457,13 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 				field.FirstElementAddress = expanded;
 
 			field.Length = length;
+
+			if (pointer == 0)
+				return;
+
+			long offset = _cache.MetaArea.PointerToOffset(expanded);
+			int size = (int) (length * field.ElementSize);
+			TagBlockDict[offset] = size;
 		}
 
 		public void VisitShaderRef(ShaderRef field)
