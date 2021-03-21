@@ -5,7 +5,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 	/// <summary>
 	///     Interaction logic for Enumeration.xaml
 	/// </summary>
-	public partial class Enumeration : UserControl
+	public partial class Enumeration : TagFieldControl
 	{
 		public Enumeration()
 		{
