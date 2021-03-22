@@ -1,4 +1,6 @@
-﻿namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
+﻿using System;
+
+namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
 	public enum StringType
 	{
@@ -82,5 +84,7 @@
 		{
 			return new StringData(Name, Offset, FieldAddress, _type, _value, _size, PluginLine, ToolTip);
 		}
+
+		public override int DataSize() => Size;
 	}
 }

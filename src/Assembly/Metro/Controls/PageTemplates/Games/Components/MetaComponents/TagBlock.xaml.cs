@@ -6,7 +6,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 	/// <summary>
 	///     Interaction logic for TagBlock.xaml
 	/// </summary>
-	public partial class TagBlock : UserControl
+	public partial class TagBlock : TagFieldControl
 	{
 		public static RoutedCommand ReallocateCommand = new RoutedCommand();
 		public static RoutedCommand IsolateCommand = new RoutedCommand();

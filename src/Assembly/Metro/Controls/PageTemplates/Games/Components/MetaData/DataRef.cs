@@ -1,4 +1,5 @@
 ﻿using Blamite.IO;
+using System;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {

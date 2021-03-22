@@ -26,12 +26,20 @@ namespace Assembly.Helpers.Plugins
 		private EnumData _currentEnum;
 		private TagBlockData _currentTagBlock;
 
+		private Action<long?, int> _setFieldSelectionAction;
+
+		public int BaseSize
+        {
+			private set;
+			get;
+        }
+
 		public bool ShowComments
 		{
 			get { return App.AssemblyStorage.AssemblySettings.PluginsShowComments; }
 		}
 		
-		public ThirdGenPluginVisitor(TagHierarchy tags, Trie stringIDTrie, FileSegmentGroup metaArea, bool showInvisibles)
+		public ThirdGenPluginVisitor(TagHierarchy tags, Trie stringIDTrie, FileSegmentGroup metaArea, bool showInvisibles, Action<long?, int> fieldSelected)
 		{
 			_tags = tags;
 			_stringIDTrie = stringIDTrie;
@@ -40,6 +48,8 @@ namespace Assembly.Helpers.Plugins
 			Values = new ObservableCollection<MetaField>();
 			TagBlocks = new ObservableCollection<TagBlockData>();
 			_showInvisibles = showInvisibles;
+
+			_setFieldSelectionAction = fieldSelected;
 		}
 
 		// Public Members
@@ -53,6 +63,7 @@ namespace Assembly.Helpers.Plugins
 
 		public bool EnterPlugin(int baseSize)
 		{
+			BaseSize = baseSize;
 			return true;
 		}
 
@@ -451,6 +462,8 @@ namespace Assembly.Helpers.Plugins
 
 		private void AddValue(MetaField value)
 		{
+			value.SetFieldSelectionAction = _setFieldSelectionAction;
+
 			if (_tagBlocks.Count > 0)
 				_tagBlocks[_tagBlocks.Count - 1].Template.Add(value);
 			else

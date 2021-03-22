@@ -58,6 +58,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Uint8Data(Name, Offset, FieldAddress, Type, Value, PluginLine, ToolTip);
 		}
+
+		public override int DataSize() => 1;
 	}
 
 	/// <summary>
@@ -79,6 +81,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Int8Data(Name, Offset, FieldAddress, Type, Value, PluginLine, ToolTip);
 		}
+
+		public override int DataSize() => 1;
 	}
 
 	/// <summary>
@@ -100,6 +104,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Uint16Data(Name, Offset, FieldAddress, Type, Value, PluginLine, ToolTip);
 		}
+
+		public override int DataSize() => 2;
 	}
 
 	/// <summary>
@@ -121,6 +127,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Int16Data(Name, Offset, FieldAddress, Type, Value, PluginLine, ToolTip);
 		}
+
+		public override int DataSize() => 2;
 	}
 
 	/// <summary>
@@ -142,6 +150,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Uint32Data(Name, Offset, FieldAddress, Type, Value, PluginLine, ToolTip);
 		}
+
+		public override int DataSize() => 4;
 	}
 
 	/// <summary>
@@ -163,6 +173,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Int32Data(Name, Offset, FieldAddress, Type, Value, PluginLine, ToolTip);
 		}
+
+		public override int DataSize() => 4;
 	}
 
 	/// <summary>
@@ -184,6 +196,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Uint64Data(Name, Offset, FieldAddress, Type, Value, PluginLine, ToolTip);
 		}
+
+		public override int DataSize() => 8;
 	}
 
 	/// <summary>
@@ -205,6 +219,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Int64Data(Name, Offset, FieldAddress, Type, Value, PluginLine, ToolTip);
 		}
+
+		public override int DataSize() => 8;
 	}
 
 	/// <summary>
@@ -226,6 +242,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Float32Data(Name, Offset, FieldAddress, Type, Value, PluginLine, ToolTip);
 		}
+
+		public override int DataSize() => 4;
 	}
 
 	/// <summary>
@@ -271,5 +289,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new DegreeData(Name, Offset, FieldAddress, Type, _radian, PluginLine, ToolTip);
 		}
+
+		public override int DataSize() => 32;
 	}
 }

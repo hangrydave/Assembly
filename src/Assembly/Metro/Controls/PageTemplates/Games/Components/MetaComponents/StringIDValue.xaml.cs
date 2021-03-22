@@ -7,7 +7,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 	/// <summary>
 	///     Interaction logic for StringIDValue.xaml
 	/// </summary>
-	public partial class StringIDValue : UserControl
+	public partial class StringIDValue : TagFieldControl
 	{
 		public static readonly DependencyProperty SearchTrieProperty = DependencyProperty.Register("SearchTrie", typeof (Trie),
 			typeof (StringIDValue));

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
@@ -50,7 +51,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			}
 		}
 
-		public EnumValue SelectedValue
+        public EnumValue SelectedValue
 		{
 			get { return _selectedValue; }
 			set
@@ -79,6 +80,20 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 					result._selectedValue = copiedValue;
 			}
 			return result;
+		}
+
+		public override int DataSize()
+		{
+			switch (_type)
+			{
+				case EnumType.Enum8:
+					return 1;
+				case EnumType.Enum16:
+					return 2;
+				case EnumType.Enum32:
+					return 4;
+			}
+			return 1;
 		}
 	}
 

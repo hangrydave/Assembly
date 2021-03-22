@@ -78,6 +78,18 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			}
 		}
 
+		public abstract int DataSize();
+
+		public void SetFieldSelection()
+        {
+			SetFieldSelectionAction(FieldAddress, DataSize());
+        }
+
+		public void ClearFieldSelection()
+        {
+			SetFieldSelectionAction(null, 0);
+        }
+
 		public bool ToolTipExists
 		{
 			get { return !string.IsNullOrEmpty(_tooltip); }

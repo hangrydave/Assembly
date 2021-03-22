@@ -145,7 +145,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 			using (XmlReader xml = XmlReader.Create(_pluginPath))
 			{
 				_pluginVisitor = new ThirdGenPluginVisitor(_tags, _stringIdTrie, _cache.MetaArea,
-					App.AssemblyStorage.AssemblySettings.PluginsShowInvisibles);
+					App.AssemblyStorage.AssemblySettings.PluginsShowInvisibles, SetFieldSelection);
 				AssemblyPluginLoader.LoadPlugin(xml, _pluginVisitor);
 			}
 
@@ -174,6 +174,13 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 				if (searchSelectedItem <= (comboSearchResults.Items.Count - 1))
 					comboSearchResults.SelectedIndex = searchSelectedItem;
 			}
+
+			hexView.Init(metaReader.TagBlockDict, _cache.MetaArea, streamManager, baseOffset, _pluginVisitor.BaseSize);
+		}
+
+		private void SetFieldSelection(long? offset, int size)
+		{
+			hexView.SetFieldSelection(offset, size);
 		}
 
 		private void RevisionViewer()
@@ -527,7 +534,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 				VariousFunctions.GetApplicationLocation() + @"Plugins");
 			XmlReader reader = XmlReader.Create(path);
 
-			var plugin = new ThirdGenPluginVisitor(_tags, _stringIdTrie, _cache.MetaArea, true);
+			var plugin = new ThirdGenPluginVisitor(_tags, _stringIdTrie, _cache.MetaArea, true, SetFieldSelection);
 			AssemblyPluginLoader.LoadPlugin(reader, plugin);
 			reader.Close();
 
