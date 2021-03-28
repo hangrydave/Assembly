@@ -34,5 +34,14 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			var result = new DataRef(Name, Offset, Format, FieldAddress, DataAddress, Value, Length, PluginLine, ToolTip, _metaArea);
 			return result;
 		}
+
+		private int _dataSize;
+
+		public void SetDataSize(int dataSize)
+		{
+			_dataSize = dataSize;
+		}
+
+		public override int DataSize() => _dataSize;
 	}
 }

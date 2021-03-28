@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
@@ -45,7 +46,9 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			}
 		}
 
-	}
+		private int _dataSize = 2 * Marshal.SizeOf(typeof(T));
+		public override int DataSize() => _dataSize;
+    }
 
 	public abstract class Multi3Data<T> : ValueField
 	{
@@ -101,6 +104,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			}
 		}
 
+		private int _dataSize = 3 * Marshal.SizeOf(typeof(T));
+		public override int DataSize() => _dataSize;
 	}
 
 	public abstract class Multi4Data<T> : ValueField
@@ -168,6 +173,9 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			}
 		}
 
+		private int _dataSize = 4 * Marshal.SizeOf(typeof(T));
+		public override int DataSize() => _dataSize;
+
 	}
 
 	public class Degree2Data : Multi2Data<float>
@@ -228,9 +236,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Degree2Data(Name, Offset, FieldAddress, Type, RadianA, RadianB, PluginLine, ToolTip);
 		}
-
-		public override int DataSize() => 16;
-    }
+	}
 
 	public class Degree3Data : Multi3Data<float>
 	{
@@ -311,8 +317,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Degree3Data(Name, Offset, FieldAddress, Type, RadianA, RadianB, RadianC, PluginLine, ToolTip);
 		}
-
-		public override int DataSize() => 24;
 	}
 
 	public class Vector2Data : Multi2Data<float>
@@ -331,8 +335,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Vector2Data(Name, Offset, FieldAddress, Type, A, B, PluginLine, ToolTip);
 		}
-
-		public override int DataSize() => 8;
 	}
 
 	public class Vector3Data : Multi3Data<float>
@@ -351,8 +353,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Vector3Data(Name, Offset, FieldAddress, Type, A, B, C, PluginLine, ToolTip);
 		}
-
-		public override int DataSize() => 12;
 	}
 
 	public class Vector4Data : Multi4Data<float>
@@ -371,8 +371,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Vector4Data(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip);
 		}
-
-		public override int DataSize() => 32;
 	}
 
 	public class Point2Data : Multi2Data<float>
@@ -391,7 +389,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Point2Data(Name, Offset, FieldAddress, Type, A, B, PluginLine, ToolTip);
 		}
-		public override int DataSize() => 8;
 	}
 
 	public class Point3Data : Multi3Data<float>
@@ -410,8 +407,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Point3Data(Name, Offset, FieldAddress, Type, A, B, C, PluginLine, ToolTip);
 		}
-
-		public override int DataSize() => 12;
 	}
 
 	public class Plane2Data : Multi3Data<float>
@@ -430,8 +425,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Plane2Data(Name, Offset, FieldAddress, Type, A, B, C, PluginLine, ToolTip);
 		}
-
-		public override int DataSize() => 12;
 	}
 
 	public class Plane3Data : Multi4Data<float>
@@ -450,8 +443,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Plane3Data(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip);
 		}
-
-		public override int DataSize() => 16;
 	}
 
 	public class RectangleData : Multi4Data<short>
@@ -470,8 +461,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new RectangleData(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip);
 		}
-
-		public override int DataSize() => 8;
     }
 
 	public class Quaternion16Data : Multi4Data<short>
@@ -490,8 +479,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Quaternion16Data(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip);
 		}
-
-		public override int DataSize() => 8;
 	}
 
 	public class Point16Data : Multi2Data<short>
@@ -510,8 +497,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new Point16Data(Name, Offset, FieldAddress, Type, A, B, PluginLine, ToolTip);
 		}
-
-		public override int DataSize() => 4;
 	}
 
 }

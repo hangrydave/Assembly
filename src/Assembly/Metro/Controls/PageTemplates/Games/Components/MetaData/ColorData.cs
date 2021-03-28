@@ -63,7 +63,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			}
 		}
 
-		public override int DataSize() => 4;
+		public override int DataSize() => -1;
 
         public override void Accept(IMetaFieldVisitor visitor)
 		{

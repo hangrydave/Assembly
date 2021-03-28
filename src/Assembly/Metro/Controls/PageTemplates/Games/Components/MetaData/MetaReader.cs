@@ -226,6 +226,9 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		public void VisitDataRef(DataRef field)
 		{
 			SeekToOffset(field.Offset);
+
+			field.SetDataSize(_dataRefLayout.Size);
+
 			StructureValueCollection values = StructureReader.ReadStructure(_reader, _dataRefLayout);
 
 			var length = (int) values.GetInteger("size");
@@ -249,6 +252,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		public void VisitTagRef(TagRefData field)
 		{
 			SeekToOffset(field.Offset);
+
+			field.SetDataSize(_tagRefLayout.Size);
 
 			TagGroup tagGroup = null;
 			DatumIndex index;
@@ -524,7 +529,10 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			// If it's a block, read its children
 			var block = field as TagBlockData;
 			if (block != null)
+			{
+				block.SetDataSize(_tagBlockLayout.Size);
 				ReadTagBlockChildren(block);
+			}
 		}
 
 		public void ReadFields(IList<MetaField> fields)
