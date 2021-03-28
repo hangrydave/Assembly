@@ -124,10 +124,21 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
             if (leftovers > 0)
                 rowCount++;
 
+            double? scrollOffset = null;
             for (int row = 0; row < rowCount; row++)
             {
                 ContentPresenter rowPresenter = hexGrid.ItemContainerGenerator.ContainerFromIndex(_selectedRow + row) as ContentPresenter;
+                if (rowPresenter == null)
+                {
+                    break;
+                }
+
                 ItemsControl rowControl = (ItemsControl)VisualTreeHelper.GetChild(rowPresenter, 0);
+
+                if (scrollOffset == null)
+                {
+                    scrollOffset = rowPresenter.TranslatePoint(new System.Windows.Point(0, 0), hexGrid).Y;
+                }
 
                 int startingCol = 0;
                 int endingCol = 0;
@@ -144,9 +155,14 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
                 }
             }
 
-            // 30 is the height of the rows, so stick the selection in roughly the middle of the screen
-            double offset = (30 * _selectedRow) - scrollViewer.ViewportHeight / 2;
-            scrollViewer.ScrollToVerticalOffset(offset);
+            if (!scrollOffset.HasValue)
+                return;
+
+            if (scrollViewer.VerticalOffset < scrollOffset && 
+                scrollOffset + 30 < scrollViewer.VerticalOffset + scrollViewer.ViewportHeight)
+                return;
+
+            scrollViewer.ScrollToVerticalOffset(scrollOffset.Value);
         }
 
         void GetStartingAndEndingCol(int row, int rowCount, int leftovers, ref int startingCol, ref int endingCol)
