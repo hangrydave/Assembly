@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
@@ -37,6 +38,9 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 				NotifyPropertyChanged("Value");
 			}
 		}
+
+		private int _dataSize = Marshal.SizeOf(typeof(T));
+		public override int DataSize() => _dataSize;
 	}
 
 	/// <summary>

@@ -276,5 +276,14 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			NotifyPropertyChanged("LastElementIndex");
 			NotifyPropertyChanged("HasChildren");
 		}
+
+		private int _dataSize;
+
+		public void SetDataSize(int dataSize)
+        {
+			_dataSize = dataSize;
+        }
+		
+		public override int DataSize() => _dataSize;
 	}
 }

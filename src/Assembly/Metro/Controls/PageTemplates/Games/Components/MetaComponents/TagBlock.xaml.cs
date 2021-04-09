@@ -1,5 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 {
@@ -14,6 +16,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 		public TagBlock()
 		{
 			InitializeComponent();
+			BorderThickness = new System.Windows.Thickness(2, 2, 2, 2);
 
 			// Set Information box
 			infoToggle.IsChecked = App.AssemblyStorage.AssemblySettings.PluginsShowInformation;
@@ -27,6 +30,20 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 		private void IsolateCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
 		{
 			e.CanExecute = true;
+		}
+
+		protected override void OnMouseEnter(MouseEventArgs e)
+		{
+			base.OnMouseEnter(e);
+			BorderBrush = Brushes.Yellow;
+			((ValueField)DataContext).SetFieldSelection();
+		}
+
+		protected override void OnMouseLeave(MouseEventArgs e)
+		{
+			base.OnMouseLeave(e);
+			BorderBrush = null;
+			((ValueField)DataContext).ClearFieldSelection();
 		}
 	}
 }

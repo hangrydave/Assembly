@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
@@ -76,5 +77,14 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			result.Value = _value;
 			return result;
 		}
+
+		private int _dataSize;
+
+		public void SetDataSize(int dataSize)
+		{
+			_dataSize = dataSize;
+		}
+
+		public override int DataSize() => _dataSize;
 	}
 }

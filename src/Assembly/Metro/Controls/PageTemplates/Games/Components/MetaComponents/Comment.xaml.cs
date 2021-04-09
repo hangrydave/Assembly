@@ -1,4 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 {
@@ -10,6 +13,6 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 		public Comment()
 		{
 			InitializeComponent();
-		}
-	}
+        }
+    }
 }

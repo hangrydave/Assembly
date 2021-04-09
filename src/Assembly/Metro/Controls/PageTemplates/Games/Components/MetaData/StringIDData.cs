@@ -1,4 +1,5 @@
 ﻿using Blamite.Util;
+using System;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
@@ -43,5 +44,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new StringIDData(Name, Offset, FieldAddress, _value, _autocompleteTrie, PluginLine, ToolTip);
 		}
+
+		public override int DataSize() => _value.Length;
 	}
 }

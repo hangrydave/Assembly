@@ -1,4 +1,5 @@
-﻿using System.Windows.Media;
+﻿using System;
+using System.Windows.Media;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
@@ -62,7 +63,9 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			}
 		}
 
-		public override void Accept(IMetaFieldVisitor visitor)
+		public override int DataSize() => -1;
+
+        public override void Accept(IMetaFieldVisitor visitor)
 		{
 			if (DataType == "color32")
 				visitor.VisitColourInt(this);

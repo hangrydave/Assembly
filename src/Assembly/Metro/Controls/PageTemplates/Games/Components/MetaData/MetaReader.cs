@@ -226,6 +226,9 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		public void VisitDataRef(DataRef field)
 		{
 			SeekToOffset(field.Offset);
+
+			field.SetDataSize(_dataRefLayout.Size);
+
 			StructureValueCollection values = StructureReader.ReadStructure(_reader, _dataRefLayout);
 
 			var length = (int) values.GetInteger("size");
@@ -249,6 +252,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		public void VisitTagRef(TagRefData field)
 		{
 			SeekToOffset(field.Offset);
+
+			field.SetDataSize(_tagRefLayout.Size);
 
 			TagGroup tagGroup = null;
 			DatumIndex index;
@@ -430,6 +435,12 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			field.B = _reader.ReadInt16();
 		}
 
+		public SortedDictionary<long, int> TagBlockDict
+		{
+			private set;
+			get;
+		} = new SortedDictionary<long, int>();
+
 		public void VisitTagBlock(TagBlockData field)
 		{
 			SeekToOffset(field.Offset);
@@ -451,6 +462,13 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 				field.FirstElementAddress = expanded;
 
 			field.Length = length;
+
+			if (pointer == 0)
+				return;
+
+			long offset = _cache.MetaArea.PointerToOffset(expanded);
+			int size = (int) (length * field.ElementSize);
+			TagBlockDict[offset] = size;
 		}
 
 		public void VisitShaderRef(ShaderRef field)
@@ -511,7 +529,10 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			// If it's a block, read its children
 			var block = field as TagBlockData;
 			if (block != null)
+			{
+				block.SetDataSize(_tagBlockLayout.Size);
 				ReadTagBlockChildren(block);
+			}
 		}
 
 		public void ReadFields(IList<MetaField> fields)

@@ -90,6 +90,22 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 				bit.Refresh();
 		}
 
+		public override int DataSize()
+		{
+			switch (_type)
+			{
+				case FlagsType.Flags8:
+					return 1;
+				case FlagsType.Flags16:
+					return 2;
+				case FlagsType.Flags32:
+					return 4;
+				case FlagsType.Flags64:
+					return 8;
+			}
+			return 1;
+		}
+
 		/// <summary>
 		///     Command that quickly checks or unchecks all bits in a flags field.
 		/// </summary>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 using Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
@@ -14,6 +16,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 		public Multi4Value()
 		{
 			InitializeComponent();
+			BorderThickness = new System.Windows.Thickness(2, 2, 2, 2);
 		}
 
 		private void ConvertToQuat()
@@ -150,6 +153,20 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 			converterOpening = true;
 			ConvertToAngle();
 			converterOpening = false;
+		}
+
+		protected override void OnMouseEnter(MouseEventArgs e)
+		{
+			base.OnMouseEnter(e);
+			BorderBrush = Brushes.Yellow;
+			((ValueField)DataContext).SetFieldSelection();
+		}
+
+		protected override void OnMouseLeave(MouseEventArgs e)
+		{
+			base.OnMouseLeave(e);
+			BorderBrush = null;
+			((ValueField)DataContext).ClearFieldSelection();
 		}
 	}
 }
