@@ -79,7 +79,7 @@
 			<bit name="Lightmaps Final Gather Ignores Backfacing Hits" index="8" />
 			<bit name="Bit 9" index="9" />
 			<bit name="Not A Normally Playable Space In An MP Map (Check This On Shared BSPs)" index="10" />
-			<bit name="Shared Bsp" index="11" />
+			<bit name="Shared BSP" index="11" />
 			<bit name="Dont Use Extra Lighting BSPs For Cubemaps" index="12" />
 			<bit name="Custom Gravity Scale" index="13" />
 			<bit name="Bit 14" index="14" />
@@ -5971,7 +5971,7 @@ append ':*' to zone set names to allow vehicles to teleport along with their pla
 			<tagRef name="Cluster Data Resource" offset="0xC0" visible="false" />
 			<tagRef name="Comments Resource" offset="0xD0" visible="false" />
 			<tagRef name="Creature Resource" offset="0xE0" visible="false" />
-			<tagRef name="Structure Lighing Resource" offset="0xF0" visible="false" />
+			<tagRef name="Structure Lighting Resource" offset="0xF0" visible="false" />
 			<tagRef name="Decorators Resource" offset="0x100" visible="false" />
 			<tagRef name="Sky References Resource" offset="0x110" visible="false" />
 			<tagRef name="Cubemap Resource" offset="0x120" visible="false" />
