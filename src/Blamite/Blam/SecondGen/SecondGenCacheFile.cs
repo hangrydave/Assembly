@@ -10,7 +10,6 @@ using Blamite.Blam.Shaders;
 using Blamite.Blam.Util;
 using Blamite.Serialization;
 using Blamite.IO;
-using Blamite.Blam.ThirdGen.Structures;
 
 namespace Blamite.Blam.SecondGen
 {
@@ -24,21 +23,20 @@ namespace Blamite.Blam.SecondGen
 		private SecondGenLanguagePackLoader _languageLoader;
 		private IndexedStringIDSource _stringIDs;
 		private SecondGenTagTable _tags;
-		private SecondGenPointerExpander _expander;
+		private DummyPointerExpander _expander;
 		private Endian _endianness;
-		private EffectInterop _effects;
 		private SoundResourceManager _soundGestalt;
 		private SecondGenSimulationDefinitionTable _simulationDefinitions;
 
-		public SecondGenCacheFile(IReader reader, EngineDescription buildInfo, string fileName, string buildString)
+		public SecondGenCacheFile(IReader reader, EngineDescription buildInfo, string filePath)
 		{
-			FileName = fileName;
+			FilePath = filePath;
 			_endianness = reader.Endianness;
 			_buildInfo = buildInfo;
 			_segmenter = new FileSegmenter(buildInfo.SegmentAlignment);
-			_expander = new SecondGenPointerExpander();
+			_expander = new DummyPointerExpander();
 			Allocator = new MetaAllocator(this, 0x1000);
-			Load(reader, buildInfo, buildString);
+			Load(reader);
 		}
 
 		public void SaveChanges(IStream stream)
@@ -49,12 +47,12 @@ namespace Blamite.Blam.SecondGen
 			_stringIDs.SaveChanges(stream);
 			if (_simulationDefinitions != null)
 				_simulationDefinitions.SaveChanges(stream);
-			CalculateChecksum(stream);
-			WriteHeader(stream);
 			WriteLanguageInfo(stream);
+			_header.Checksum = ICacheFileExtensions.GenerateChecksum(this, stream);
+			WriteHeader(stream);
 		}
 
-		public string FileName { get; private set; }
+		public string FilePath { get; private set; }
 
 		public int HeaderSize
 		{
@@ -224,7 +222,7 @@ namespace Blamite.Blam.SecondGen
 
 		public EffectInterop EffectInterops
 		{
-			get { return _effects; }
+			get { return null; }
 		}
 
 		public SoundResourceManager SoundGestalt
@@ -232,41 +230,41 @@ namespace Blamite.Blam.SecondGen
 			get { return _soundGestalt; }
 		}
 
-		private void Load(IReader reader, EngineDescription buildInfo, string buildString)
+		private void Load(IReader reader)
 		{
-			_header = LoadHeader(reader, buildInfo, buildString);
-			_tags = LoadTagTable(reader, buildInfo);
-			_fileNames = LoadFileNames(reader, buildInfo);
-			_stringIDs = LoadStringIDs(reader, buildInfo);
+			_header = LoadHeader(reader);
+			_tags = LoadTagTable(reader);
+			_fileNames = LoadFileNames(reader);
+			_stringIDs = LoadStringIDs(reader);
 
 			LoadLanguageGlobals(reader);
 			LoadScriptFiles();
 			LoadSimulationDefinitions(reader);
 		}
 
-		private SecondGenHeader LoadHeader(IReader reader, EngineDescription buildInfo, string buildString)
+		private SecondGenHeader LoadHeader(IReader reader)
 		{
 			reader.SeekTo(0);
-			StructureValueCollection values = StructureReader.ReadStructure(reader, buildInfo.Layouts.GetLayout("header"));
-			return new SecondGenHeader(values, buildInfo, buildString, _segmenter);
+			StructureValueCollection values = StructureReader.ReadStructure(reader, _buildInfo.Layouts.GetLayout("header"));
+			return new SecondGenHeader(values, _buildInfo, _segmenter);
 		}
 
-		private SecondGenTagTable LoadTagTable(IReader reader, EngineDescription buildInfo)
+		private SecondGenTagTable LoadTagTable(IReader reader)
 		{
-			return new SecondGenTagTable(reader, MetaArea, Allocator, buildInfo);
+			return new SecondGenTagTable(reader, MetaArea, Allocator, _buildInfo);
 		}
 
-		private IndexedFileNameSource LoadFileNames(IReader reader, EngineDescription buildInfo)
+		private IndexedFileNameSource LoadFileNames(IReader reader)
 		{
 			var strings = new IndexedStringTable(reader, _header.FileNameCount, _header.FileNameIndexTable, _header.FileNameData,
-				buildInfo.TagNameKey);
+				_buildInfo.TagNameKey);
 			return new IndexedFileNameSource(strings);
 		}
 
-		private IndexedStringIDSource LoadStringIDs(IReader reader, EngineDescription buildInfo)
+		private IndexedStringIDSource LoadStringIDs(IReader reader)
 		{
 			var strings = new IndexedStringTable(reader, _header.StringIDCount, _header.StringIDIndexTable, _header.StringIDData,
-				buildInfo.StringIDKey);
+				_buildInfo.StringIDKey);
 			return new IndexedStringIDSource(strings, new LengthBasedStringIDResolver(strings));
 		}
 
@@ -335,27 +333,6 @@ namespace Blamite.Blam.SecondGen
 				if (scnr != null)
 					_simulationDefinitions = new SecondGenSimulationDefinitionTable(scnr, _tags, reader, MetaArea, Allocator, _buildInfo);
 			}
-		}
-
-		private void CalculateChecksum(IReader reader)
-		{
-			// XOR all of the uint32s in the file after the header
-			// based on http://codeescape.com/2009/05/optimized-c-halo-2-map-signing-algorithm/
-			uint checksum = 0;
-			int blockSize = 0x10000;
-			reader.SeekTo(_header.HeaderSize);
-
-			while (reader.Position < reader.Length)
-			{
-				int actualSize = Math.Min(blockSize, (int)(reader.Length - reader.Position));
-				int adjustedSize = (actualSize + 3) & ~0x3;
-				byte[] block = new byte[adjustedSize];
-				reader.ReadBlock(block, 0, actualSize);
-				for (int i = 0; i < block.Length; i += 4)
-					checksum ^= BitConverter.ToUInt32(block, i);
-			}
-
-			_header.Checksum = checksum;
 		}
 
 		private void WriteStringBlock(IStream stream)

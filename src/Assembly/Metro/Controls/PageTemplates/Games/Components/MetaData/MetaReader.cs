@@ -240,6 +240,8 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			{
 				field.DataAddress = expanded;
 				field.Length = length;
+
+				ReadDataRefContents(field);
 			}
 			else
 			{

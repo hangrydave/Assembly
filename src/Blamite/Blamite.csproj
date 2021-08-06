@@ -103,11 +103,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Blam\CacheFileLoader.cs" />
+    <Compile Include="Blam\DummyPointerExpander.cs" />
     <Compile Include="Blam\EngineType.cs" />
     <Compile Include="Blam\EffectInterop.cs" />
     <Compile Include="Blam\FirstGenIndexedStringTable.cs" />
     <Compile Include="Blam\FirstGen\FirstGenCacheFile.cs" />
-    <Compile Include="Blam\FirstGen\FirstGenPointerExpander.cs" />
     <Compile Include="Blam\FirstGen\FirstGenResourceMetaLoader.cs" />
     <Compile Include="Blam\FirstGen\MetaOffsetConverter.cs" />
     <Compile Include="Blam\FirstGen\Structures\FirstGenHeader.cs" />
@@ -169,9 +169,7 @@
     <Compile Include="Blam\SecondGen\Localization\SecondGenLanguageGlobals.cs" />
     <Compile Include="Blam\SecondGen\Localization\SecondGenLanguagePackLoader.cs" />
     <Compile Include="Blam\SecondGen\Localization\SecondGenMultilingualStringList.cs" />
-    <Compile Include="Blam\SecondGen\SecondGenPointerExpander.cs" />
     <Compile Include="Blam\SecondGen\Structures\SecondGenSimulationDefinitionTable.cs" />
-    <Compile Include="Blam\SecondGen\Structures\SecondGenScenarioScriptFile.cs" />
     <Compile Include="Blam\Shaders\IShader.cs" />
     <Compile Include="Blam\Shaders\IShaderStreamer.cs" />
     <Compile Include="Blam\Localization\DummyLanguagePackLoader.cs" />
@@ -325,7 +323,6 @@
     <Compile Include="Blam\ThirdGen\Localization\ThirdGenMultilingualStringList.cs" />
     <Compile Include="Blam\IndexedStringIDSource.cs" />
     <Compile Include="Blam\IndexedStringTable.cs" />
-    <Compile Include="Blam\CacheFileVersionInfo.cs" />
     <Compile Include="Blam\Util\AESKey.cs" />
     <Compile Include="Serialization\LocaleSymbolCollection.cs" />
     <Compile Include="Blam\StringIDNamespaceResolver.cs" />
@@ -429,10 +426,16 @@
     <Content Include="Formats\Engines.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Formats\Halo1Xbox\H1X_Scripting.xml">
+    <Content Include="Formats\Halo1\H1AMCC_U1_Scripting.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Formats\Halo1Xbox\Layouts\H1X_Layouts_Core.xml">
+    <Content Include="Formats\Halo1\H1CE_Scripting.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Formats\Halo1\H1X_Scripting.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Formats\Halo1\LayoutsXbox\H1X_Layouts_Core.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Formats\Halo1\H1AMCC_Poking.xml">
@@ -456,7 +459,16 @@
     <Content Include="Formats\Halo1\H1_Scripting.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Formats\Halo1\LayoutsXbox\H1X_Layouts_Scenario.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Formats\Halo1\Layouts\H1_Layouts_Core.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Formats\Halo1\Layouts\H1_Layouts_Scenario.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Formats\Halo1\Shadow_Scripting.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Formats\Halo2AMCC\H2AMCC_LocaleSymbols.xml">
@@ -598,6 +610,9 @@
     <Content Include="Formats\Halo3\Layouts\H3_Layouts_Scenario.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Formats\Halo3\Layouts\H3_Layouts_Scripting.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Formats\Halo3\Layouts\H3_Layouts_Shaders.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -727,6 +742,9 @@
     <Content Include="Formats\ODSTMCC\Layouts\ODSTMCC_Layouts_Scenario.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Formats\ODSTMCC\Layouts\ODSTMCC_Layouts_Scripting.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Formats\ODSTMCC\Layouts\ODSTMCC_Layouts_Sounds.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -740,6 +758,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Formats\ODSTMCC\ODSTMCC_StringIDs.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Formats\ODST\Layouts\ODST_Layouts_Scripting.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Formats\ODST\Layouts\ODST_Layouts_Shaders.xml">
@@ -882,6 +903,27 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Formats\Reach\Reach_VertexBuffer.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Formats\Stubbs\LayoutsPC\SPC_Layouts_Core.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Formats\Stubbs\LayoutsPC\SPC_Layouts_Scenario.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Formats\Stubbs\LayoutsRerelease\SR_Layouts_Core.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Formats\Stubbs\LayoutsXbox\SX_Layouts_Core.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Formats\Stubbs\LayoutsXbox\SX_Layouts_Scenario.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Formats\Stubbs\SPC_Scripting.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Formats\Stubbs\SX_Scripting.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

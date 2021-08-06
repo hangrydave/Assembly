@@ -78,14 +78,14 @@
 		<option name="Shield Stun" value="0x7" />
 		<option name="Recent Umbrella Shield Vitality" value="0x8" />
 		<option name="Umbrella Shield Stun" value="0x9" />
-		<option name="Region" value="0xA" tooltip="00 damage" />
-		<option name="Region" value="0xB" tooltip="01 damage" />
-		<option name="Region" value="0xC" tooltip="02 damage" />
-		<option name="Region" value="0xD" tooltip="03 damage" />
-		<option name="Region" value="0xE" tooltip="04 damage" />
-		<option name="Region" value="0xF" tooltip="05 damage" />
-		<option name="Region" value="0x10" tooltip="06 damage" />
-		<option name="Region" value="0x11" tooltip="07 damage" />
+		<option name="Region 00 Damage" value="0xA" />
+		<option name="Region 01 Damage" value="0xB" />
+		<option name="Region 02 Damage" value="0xC" />
+		<option name="Region 03 Damage" value="0xD" />
+		<option name="Region 04 Damage" value="0xE" />
+		<option name="Region 05 Damage" value="0xF" />
+		<option name="Region 06 Damage" value="0x10" />
+		<option name="Region 07 Damage" value="0x11" />
 		<option name="Alive" value="0x12" />
 		<option name="Compass" value="0x13" />
 	</enum16>
@@ -100,14 +100,14 @@
 		<option name="Shield Stun" value="0x7" />
 		<option name="Recent Umbrella Shield Vitality" value="0x8" />
 		<option name="Umbrella Shield Stun" value="0x9" />
-		<option name="Region" value="0xA" tooltip="00 damage" />
-		<option name="Region" value="0xB" tooltip="01 damage" />
-		<option name="Region" value="0xC" tooltip="02 damage" />
-		<option name="Region" value="0xD" tooltip="03 damage" />
-		<option name="Region" value="0xE" tooltip="04 damage" />
-		<option name="Region" value="0xF" tooltip="05 damage" />
-		<option name="Region" value="0x10" tooltip="06 damage" />
-		<option name="Region" value="0x11" tooltip="07 damage" />
+		<option name="Region 00 Damage" value="0xA" />
+		<option name="Region 01 Damage" value="0xB" />
+		<option name="Region 02 Damage" value="0xC" />
+		<option name="Region 03 Damage" value="0xD" />
+		<option name="Region 04 Damage" value="0xE" />
+		<option name="Region 05 Damage" value="0xF" />
+		<option name="Region 06 Damage" value="0x10" />
+		<option name="Region 07 Damage" value="0x11" />
 		<option name="Alive" value="0x12" />
 		<option name="Compass" value="0x13" />
 	</enum16>
@@ -122,14 +122,14 @@
 		<option name="Shield Stun" value="0x7" />
 		<option name="Recent Umbrella Shield Vitality" value="0x8" />
 		<option name="Umbrella Shield Stun" value="0x9" />
-		<option name="Region" value="0xA" tooltip="00 damage" />
-		<option name="Region" value="0xB" tooltip="01 damage" />
-		<option name="Region" value="0xC" tooltip="02 damage" />
-		<option name="Region" value="0xD" tooltip="03 damage" />
-		<option name="Region" value="0xE" tooltip="04 damage" />
-		<option name="Region" value="0xF" tooltip="05 damage" />
-		<option name="Region" value="0x10" tooltip="06 damage" />
-		<option name="Region" value="0x11" tooltip="07 damage" />
+		<option name="Region 00 Damage" value="0xA" />
+		<option name="Region 01 Damage" value="0xB" />
+		<option name="Region 02 Damage" value="0xC" />
+		<option name="Region 03 Damage" value="0xD" />
+		<option name="Region 04 Damage" value="0xE" />
+		<option name="Region 05 Damage" value="0xF" />
+		<option name="Region 06 Damage" value="0x10" />
+		<option name="Region 07 Damage" value="0x11" />
 		<option name="Alive" value="0x12" />
 		<option name="Compass" value="0x13" />
 	</enum16>
@@ -144,14 +144,14 @@
 		<option name="Shield Stun" value="0x7" />
 		<option name="Recent Umbrella Shield Vitality" value="0x8" />
 		<option name="Umbrella Shield Stun" value="0x9" />
-		<option name="Region" value="0xA" tooltip="00 damage" />
-		<option name="Region" value="0xB" tooltip="01 damage" />
-		<option name="Region" value="0xC" tooltip="02 damage" />
-		<option name="Region" value="0xD" tooltip="03 damage" />
-		<option name="Region" value="0xE" tooltip="04 damage" />
-		<option name="Region" value="0xF" tooltip="05 damage" />
-		<option name="Region" value="0x10" tooltip="06 damage" />
-		<option name="Region" value="0x11" tooltip="07 damage" />
+		<option name="Region 00 Damage" value="0xA" />
+		<option name="Region 01 Damage" value="0xB" />
+		<option name="Region 02 Damage" value="0xC" />
+		<option name="Region 03 Damage" value="0xD" />
+		<option name="Region 04 Damage" value="0xE" />
+		<option name="Region 05 Damage" value="0xF" />
+		<option name="Region 06 Damage" value="0x10" />
+		<option name="Region 07 Damage" value="0x11" />
 		<option name="Alive" value="0x12" />
 		<option name="Compass" value="0x13" />
 	</enum16>
@@ -167,7 +167,7 @@
 	<undefined name="Unknown" offset="0x134" visible="false" />
 	<undefined name="Unknown" offset="0x138" visible="false" />
 	<int16 name="HUD Text Message Index" offset="0x13C" visible="true" />
-	<int16 name="Forced Shader Permuation Index" offset="0x13E" visible="true" />
+	<int16 name="Forced Shader Permutation Index" offset="0x13E" visible="true" />
 	<tagblock name="Attachments" offset="0x140" visible="true" elementSize="0x48">
 		<tagRef name="Type" offset="0x0" visible="true" />
 		<ascii name="Marker" offset="0x10" length="0x20" visible="true" />
@@ -556,7 +556,7 @@
 		<option name="Large" value="0x2" />
 	</enum16>
 	<int16 name="Unknown" offset="0x29A" visible="false" />
-	<enum16 name="Bucket Type" offset="0x29C" visible="true">
+	<enum16 name="Metagame Type" offset="0x29C" visible="true">
 		<option name="Brute" value="0x0" />
 		<option name="Grunt" value="0x1" />
 		<option name="Jackal" value="0x2" />
@@ -577,21 +577,32 @@
 		<option name="Mongoose" value="0x11" />
 		<option name="Warthog" value="0x12" />
 		<option name="Scorpion" value="0x13" />
-		<option name="Falcon" value="0x14" />
+		<option name="Hornet" value="0x14" />
 		<option name="Pelican" value="0x15" />
 		<option name="Revenant" value="0x16" />
 		<option name="Seraph" value="0x17" />
 		<option name="Shade" value="0x18" />
 		<option name="Watchtower" value="0x19" />
 		<option name="Ghost" value="0x1A" />
-		<option name="Space Banshee" value="0x1B" />
+		<option name="Chopper" value="0x1B" />
 		<option name="Mauler" value="0x1C" />
 		<option name="Wraith" value="0x1D" />
 		<option name="Banshee" value="0x1E" />
 		<option name="Phantom" value="0x1F" />
-		<option name="Null" value="0x2B" />
+		<option name="Scarab" value="0x20" />
+		<option name="Guntower" value="0x21" />
+		<option name="Tuning Fork" value="0x22" />
+		<option name="Broadsword" value="0x23" />
+		<option name="Mammoth" value="0x24" />
+		<option name="Lich" value="0x25" />
+		<option name="Mantis" value="0x26" />
+		<option name="Wasp" value="0x27" />
+		<option name="Phaeton" value="0x28" />
+		<option name="Watcher" value="0x29" />
+		<option name="Knight" value="0x2A" />
+		<option name="Pawn" value="0x2B" />
 	</enum16>
-	<enum16 name="Bucket Classification" offset="0x29E" visible="true">
+	<enum16 name="Metagame Classification" offset="0x29E" visible="true">
 		<option name="Infantry" value="0x0" />
 		<option name="Leader" value="0x1" />
 		<option name="Hero" value="0x2" />
@@ -601,7 +612,6 @@
 		<option name="Giant Vehicle" value="0x6" />
 		<option name="Standard Vehicle" value="0x7" />
 	</enum16>
-	<int16 name="Unknown" offset="0x29E" visible="false" />
 	<undefined name="Unknown" offset="0x2A0" visible="false" />
 	<undefined name="Unknown" offset="0x2A4" visible="false" />
 	<tagblock name="New HUD Interfaces" offset="0x2A8" visible="true" elementSize="0x30">
@@ -710,8 +720,7 @@
 		<undefined name="Unknown" offset="0xE8" visible="false" />
 		<int16 name="HUD Text Message Index" offset="0xEC" visible="true" />
 		<int16 name="Unknown" offset="0xEE" visible="false" />
-		<degree name="Yaw Minimum" offset="0xF0" visible="true" />
-		<degree name="Yaw Maximum" offset="0xF4" visible="true" />
+		<ranged name="Yaw" offset="0xF0" visible="true" />
 		<tagRef name="Built-In Gunner" offset="0xF8" visible="true" />
 		<undefined name="Unknown" offset="0x108" visible="false" />
 		<undefined name="Unknown" offset="0x10C" visible="false" />
@@ -757,14 +766,14 @@
 		<option name="None" value="0x0" />
 		<option name="Flying Velocity" value="0x1" />
 	</enum16>
-	<tagRef name="DON't USE" offset="0x314" visible="true" />
+	<tagRef name="DON'T USE" offset="0x314" visible="true" />
 	<comment title="Flying" />
 	<degree name="Bank Angle" offset="0x324" visible="true" tooltip="angle at which we bank left/right when sidestepping or turning while moving forwards" />
 	<float32 name="Bank Apply Time" offset="0x328" visible="true" tooltip="time it takes us to apply a bank" />
 	<float32 name="Bank Decay Time" offset="0x32C" visible="true" tooltip="time it takes us to recover from a bank" />
 	<float32 name="Pitch Ratio" offset="0x330" visible="true" tooltip="amount that we pitch up/down when moving up or down" />
-	<float32 name="Max Velocity" offset="0x334" visible="true" tooltip="max velocity when not crouching" />
-	<float32 name="Max Sidestep Velocity" offset="0x338" visible="true" tooltip="max sideways or up/down velocity when not crouching" />
+	<float32 name="Maximum Velocity" offset="0x334" visible="true" tooltip="max velocity when not crouching" />
+	<float32 name="Maximum Sidestep Velocity" offset="0x338" visible="true" tooltip="max sideways or up/down velocity when not crouching" />
 	<float32 name="Acceleration" offset="0x33C" visible="true" />
 	<float32 name="Deceleration" offset="0x340" visible="true" />
 	<degree name="Angular Velocity Maximum" offset="0x344" visible="true" tooltip="turn rate" />

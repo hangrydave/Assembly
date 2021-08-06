@@ -14,10 +14,10 @@ namespace Blamite.Blam.ThirdGen.Structures
 		public int cacheSegmentAlignment;
 		private IPointerExpander _expander;
 
-		public ThirdGenHeader(StructureValueCollection values, EngineDescription info, string buildString,
-			FileSegmenter segmenter, IPointerExpander expander)
+		public ThirdGenHeader(StructureValueCollection values, EngineDescription info, FileSegmenter segmenter,
+			IPointerExpander expander)
 		{
-			BuildString = buildString;
+			BuildString = info.BuildVersion;
 			HeaderSize = info.HeaderSize;
 			cacheSegmentAlignment = info.SegmentAlignment;
 			_expander = expander;
@@ -75,6 +75,8 @@ namespace Blamite.Blam.ThirdGen.Structures
 
 		public uint[] SectionOffsetMasks { get; private set; }
 		public ThirdGenInteropSection[] Sections { get; private set; }
+
+		public uint Checksum { get; set; }
 
 		/// <summary>
 		///     Serializes the header's values, storing them into a StructureValueCollection.
@@ -157,6 +159,8 @@ namespace Blamite.Blam.ThirdGen.Structures
 				values.SetInteger("unknown table count", (uint) UnknownCount);
 				values.SetInteger("unknown table offset", (ulong)UnknownTableLocation.AsPointer());
 			}
+
+			values.SetInteger("checksum", Checksum);
 			return values;
 		}
 
@@ -293,6 +297,8 @@ namespace Blamite.Blam.ThirdGen.Structures
 			}
 
 			CalculateStringGroup(values, segmenter);
+
+			Checksum = (uint)values.GetInteger("checksum");
 		}
 
 		private void LoadInteropData(StructureValueCollection headerValues)

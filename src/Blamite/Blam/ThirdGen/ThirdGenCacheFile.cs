@@ -39,15 +39,15 @@ namespace Blamite.Blam.ThirdGen
 
 		private bool _zoneOnly = false;
 
-		public ThirdGenCacheFile(IReader reader, EngineDescription buildInfo, string fileName, string buildString)
+		public ThirdGenCacheFile(IReader reader, EngineDescription buildInfo, string filePath)
 		{
-			FileName = fileName;
+			FilePath = filePath;
 			_endianness = reader.Endianness;
 			_buildInfo = buildInfo;
 			_segmenter = new FileSegmenter(buildInfo.SegmentAlignment);
 			_expander = new ThirdGenPointerExpander(buildInfo.ExpandMagic);
 			Allocator = new MetaAllocator(this, 0x10000);
-			Load(reader, buildString);
+			Load(reader);
 		}
 
 		public ThirdGenHeader FullHeader
@@ -64,11 +64,12 @@ namespace Blamite.Blam.ThirdGen
 				_simulationDefinitions.SaveChanges(stream);
 			if (_effects != null)
 				_effects.SaveChanges(stream);
-			WriteHeader(stream);
 			WriteLanguageInfo(stream);
+			_header.Checksum = ICacheFileExtensions.GenerateChecksum(this, stream);
+			WriteHeader(stream);
 		}
 
-		public string FileName { get; private set; }
+		public string FilePath { get; private set; }
 
 		public int HeaderSize
 		{
@@ -243,9 +244,9 @@ namespace Blamite.Blam.ThirdGen
 			get { return _soundGestalt; }
 		}
 
-		private void Load(IReader reader, string buildString)
+		private void Load(IReader reader)
 		{
-			LoadHeader(reader, buildString);
+			LoadHeader(reader);
 			LoadFileNames(reader);
 			var resolver = LoadStringIDNamespaces(reader);
 			LoadStringIDs(reader, resolver);
@@ -259,11 +260,11 @@ namespace Blamite.Blam.ThirdGen
 			ShaderStreamer = new ThirdGenShaderStreamer(this, _buildInfo);
 		}
 
-		private void LoadHeader(IReader reader, string buildString)
+		private void LoadHeader(IReader reader)
 		{
 			reader.SeekTo(0);
 			StructureValueCollection values = StructureReader.ReadStructure(reader, _buildInfo.Layouts.GetLayout("header"));
-			_header = new ThirdGenHeader(values, _buildInfo, buildString, _segmenter, _expander);
+			_header = new ThirdGenHeader(values, _buildInfo, _segmenter, _expander);
 		}
 
 		private void LoadTags(IReader reader)

@@ -67,7 +67,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 		private TagBlockFlattener _flattener;
 		private FieldChangeSet _memoryChanges;
 		private string _pluginPath;
-		private ThirdGenPluginVisitor _pluginVisitor;
+		private AssemblyPluginVisitor _pluginVisitor;
 		private ObservableCollection<SearchResult> _searchResults;
 		private TagEntry _tag;
 
@@ -144,8 +144,9 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 			// Load Plugin File
 			using (XmlReader xml = XmlReader.Create(_pluginPath))
 			{
-				_pluginVisitor = new ThirdGenPluginVisitor(_tags, _stringIdTrie, _cache.MetaArea,
+				_pluginVisitor = new AssemblyPluginVisitor(_tags, _stringIdTrie, _cache.MetaArea,
 					App.AssemblyStorage.AssemblySettings.PluginsShowInvisibles, SetFieldSelection);
+
 				AssemblyPluginLoader.LoadPlugin(xml, _pluginVisitor);
 			}
 
@@ -534,7 +535,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 				VariousFunctions.GetApplicationLocation() + @"Plugins");
 			XmlReader reader = XmlReader.Create(path);
 
-			var plugin = new ThirdGenPluginVisitor(_tags, _stringIdTrie, _cache.MetaArea, true, SetFieldSelection);
+			var plugin = new AssemblyPluginVisitor(_tags, _stringIdTrie, _cache.MetaArea, true, SetFieldSelection, true);
 			AssemblyPluginLoader.LoadPlugin(reader, plugin);
 			reader.Close();
 
