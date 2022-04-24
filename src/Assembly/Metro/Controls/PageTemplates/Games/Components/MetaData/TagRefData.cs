@@ -78,6 +78,11 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return result;
 		}
 
+		public override string AsString()
+		{
+			return string.Format("tagref | {0} | {1} {2}", Name, Value?.GroupName ?? "null", Value?.TagFileName ?? "null");
+		}
+
 		private int _dataSize;
 
 		public void SetDataSize(int dataSize)

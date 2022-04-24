@@ -46,6 +46,11 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			}
 		}
 
+		public override string AsString()
+		{
+			return string.Format("{0} | {1} | {2} {3}", Type, Name, A, B);
+		}
+
 		private int _dataSize = 2 * Marshal.SizeOf(typeof(T));
 		public override int DataSize() => _dataSize;
     }
@@ -102,6 +107,11 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 				_c = value;
 				NotifyPropertyChanged("C");
 			}
+		}
+
+		public override string AsString()
+		{
+			return string.Format("{0} | {1} | {2} {3} {4}", Type, Name, A, B, C);
 		}
 
 		private int _dataSize = 3 * Marshal.SizeOf(typeof(T));
@@ -173,9 +183,13 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			}
 		}
 
+		public override string AsString()
+		{
+			return string.Format("{0} | {1} | {2} {3} {4} {5}", Type, Name, A, B, C, D);
+		}
+
 		private int _dataSize = 4 * Marshal.SizeOf(typeof(T));
 		public override int DataSize() => _dataSize;
-
 	}
 
 	public class Degree2Data : Multi2Data<float>

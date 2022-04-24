@@ -439,7 +439,7 @@
 			<int16 name="Portal Index" offset="0x0" visible="true" />
 		</tagblock>
 		<int32 name="Checksum From Structure" offset="0x94" visible="true" />
-		<tagblock name="Instanced Geometry Indeces" offset="0x98" visible="true" elementSize="0x2">
+		<tagblock name="Instanced Geometry Indices" offset="0x98" visible="true" elementSize="0x2">
 			<int16 name="Instanced Geometry Index" offset="0x0" visible="true" />
 		</tagblock>
 		<tagblock name="Index Reorder Table" offset="0xA0" visible="true" elementSize="0x2">
@@ -1182,8 +1182,8 @@
 	<undefined name="Unknown" offset="0x1B4" visible="false" />
 	<undefined name="Unknown" offset="0x1B8" visible="false" />
 	<undefined name="Unknown" offset="0x1BC" visible="false" />
-	<float32 name="Vehicle Sperical Limit Radius" offset="0x1C0" visible="true" />
-	<point3 name="Vehicle Sperical Limit" offset="0x1C4" visible="true" />
+	<float32 name="Vehicle Spherical Limit Radius" offset="0x1C0" visible="true" />
+	<point3 name="Vehicle Spherical Limit" offset="0x1C4" visible="true" />
 	<tagblock name="Debug Info" offset="0x1D0" visible="true" elementSize="0x58">
 		<undefined name="Unknown" offset="0x0" visible="false" />
 		<undefined name="Unknown" offset="0x4" visible="false" />

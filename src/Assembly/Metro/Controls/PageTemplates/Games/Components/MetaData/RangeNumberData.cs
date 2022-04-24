@@ -50,6 +50,11 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			}
 		}
 
+		public override string AsString()
+		{
+			return string.Format("{0} | {1} | {2} {3}", Type, Name, Min, Max);
+		}
+
 		private int _dataSize = 2 * Marshal.SizeOf(typeof(T));
 		public override int DataSize() => _dataSize;
 	}

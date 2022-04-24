@@ -42,7 +42,7 @@
 	</layout>
 
 	<!-- Index table header -->
-	<layout for="index header">
+	<layout for="index header" size="0x48">
 		<int32 name="number of tag groups" offset="0x0" />
 		<uint64 name="tag group table address" offset="0x8" />
 		<int32 name="number of tags" offset="0x10" />
@@ -93,7 +93,7 @@
 		</array>
 	</layout>
 
-	<layout for="locale index table element">
+	<layout for="locale index table element" size="0x8">
 		<uint32 name="stringid" offset="0x0" />
 		<uint32 name="offset" offset="0x4" />
 	</layout>
@@ -123,8 +123,8 @@
 	
 	<!-- sbsp (scenario_structure_bsp) -->
 	<layout for="sbsp">
-		<int32 name="number of instanced geometry" offset="0x1B0" />
-		<uint32 name="instanced geometry table address" offset="0x1B4" />
+		<int32 name="number of instanced geometry" offset="0x1C0" /><!-- was 1B0/1B4 prior to april 7 2021 update -->
+		<uint32 name="instanced geometry table address" offset="0x1C4" />
 	</layout>
 	
 	<layout for="sbsp instanced geometry" size="0x78">

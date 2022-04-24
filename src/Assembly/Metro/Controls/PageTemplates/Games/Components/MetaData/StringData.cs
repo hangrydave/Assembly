@@ -85,6 +85,11 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 			return new StringData(Name, Offset, FieldAddress, _type, _value, _size, PluginLine, ToolTip);
 		}
 
+		public override string AsString()
+		{
+			return string.Format("{0} | {1} | {2}", TypeStr, Name, Value);
+		}
+
 		public override int DataSize() => Size;
 	}
 }

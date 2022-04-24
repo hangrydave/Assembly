@@ -36,6 +36,11 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		/// <returns>The cloned field with a value identical to the source field.</returns>
 		public abstract MetaField CloneValue();
 
+		/// <summary>
+		/// Gets a string representation of this field and its data.
+		/// </summary>
+		public abstract string AsString();
+
 		public Action<long?, int> SetFieldSelectionAction { get; set; }
 	}
 }
