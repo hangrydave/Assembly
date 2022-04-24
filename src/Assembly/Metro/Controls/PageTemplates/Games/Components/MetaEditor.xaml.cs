@@ -178,6 +178,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components
 					comboSearchResults.SelectedIndex = searchSelectedItem;
 			}
 
+			// Init hexview
 			hexView.Init(metaReader.TagBlockDict, _cache.MetaArea, streamManager, baseOffset, _pluginVisitor.BaseSize);
 		}
 
