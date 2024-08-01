@@ -5,7 +5,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 	/// <summary>
 	///     Interaction logic for RangeValue.xaml
 	/// </summary>
-	public partial class RangeValue : UserControl
+	public partial class RangeValue : TagFieldControl
 	{
 		public RangeValue()
 		{

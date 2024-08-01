@@ -1,4 +1,6 @@
-﻿namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
+﻿using System;
+
+namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
 	/// <summary>
 	///     Base class for meta field data.
@@ -38,5 +40,7 @@
 		/// Gets a string representation of this field and its data.
 		/// </summary>
 		public abstract string AsString();
+
+		public Action<long?, int> SetFieldSelectionAction { get; set; }
 	}
 }

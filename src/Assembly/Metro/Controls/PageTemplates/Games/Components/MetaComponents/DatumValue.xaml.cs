@@ -6,7 +6,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 	/// <summary>
 	///     Interaction logic for DatumValue.xaml
 	/// </summary>
-	public partial class DatumValue : UserControl
+	public partial class DatumValue : TagFieldControl
 	{
 		public DatumValue()
 		{

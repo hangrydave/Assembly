@@ -5,7 +5,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 	/// <summary>
 	///     Interaction logic for FlagsValue.xaml
 	/// </summary>
-	public partial class FlagsValue : UserControl
+	public partial class FlagsValue : TagFieldControl
 	{
 		public FlagsValue()
 		{

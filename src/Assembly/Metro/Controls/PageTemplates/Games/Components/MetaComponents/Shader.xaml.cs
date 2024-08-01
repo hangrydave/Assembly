@@ -11,7 +11,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 	/// <summary>
 	///     Interaction logic for Shader.xaml
 	/// </summary>
-	public partial class Shader : UserControl
+	public partial class Shader : TagFieldControl
 	{
 		public Shader()
 		{

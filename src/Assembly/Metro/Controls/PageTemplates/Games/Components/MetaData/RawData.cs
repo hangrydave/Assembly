@@ -117,5 +117,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return string.Format("{0} | {1} | hash = {2}", Type, Name, Value.GetHashCode());
 		}
+
+		public override int DataSize() => Length;
 	}
 }

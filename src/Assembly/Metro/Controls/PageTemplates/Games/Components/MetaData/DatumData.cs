@@ -1,4 +1,6 @@
-﻿namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
+﻿using System;
+
+namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
 	/// <summary>
 	///     32-bit datum, split into an index and salt
@@ -49,5 +51,8 @@
 		{
 			return string.Format("datum | {0} | {1} {2}", Name, Salt, Index);
 		}
+
+		private int _dataSize = sizeof(ushort) + sizeof(ushort);
+		public override int DataSize() => _dataSize;
 	}
 }

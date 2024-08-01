@@ -1,4 +1,5 @@
 ﻿using Blamite.Util;
+using System;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
@@ -48,5 +49,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return string.Format("stringid | {0} | {1}", Name, Value);
 		}
+
+		public override int DataSize() => 4; // 4 bytes for size of address to string
 	}
 }

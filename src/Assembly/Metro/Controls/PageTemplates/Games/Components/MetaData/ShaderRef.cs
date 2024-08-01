@@ -64,5 +64,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return string.Format("shader | {0} | {1}", Name, IsValid ? "valid" : "invalid");
 		}
+
+		public override int DataSize() => -1;
 	}
 }

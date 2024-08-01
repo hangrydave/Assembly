@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
@@ -81,5 +82,14 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return string.Format("tagref | {0} | {1} {2}", Name, Value?.GroupName ?? "null", Value?.TagFileName ?? "null");
 		}
+
+		private int _dataSize;
+
+		public void SetDataSize(int dataSize)
+		{
+			_dataSize = dataSize;
+		}
+
+		public override int DataSize() => _dataSize;
 	}
 }

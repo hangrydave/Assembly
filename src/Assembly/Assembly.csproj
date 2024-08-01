@@ -609,6 +609,9 @@
     <Compile Include="Metro\Controls\AvalonDockMetro\Vectors\VTabGroup.xaml.cs">
       <DependentUpon>VTabGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Metro\Controls\PageTemplates\Games\Components\HexView.xaml.cs">
+      <DependentUpon>HexView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Metro\Controls\PageTemplates\Games\Components\MetaComponents\CustomBooleanToVisibilityConverter.cs" />
     <Compile Include="Metro\Controls\PageTemplates\Games\Components\MetaComponents\DatumValue.xaml.cs">
       <DependentUpon>DatumValue.xaml</DependentUpon>
@@ -631,6 +634,7 @@
     <Compile Include="Metro\Controls\PageTemplates\Games\Components\MetaComponents\RangeValue.xaml.cs">
       <DependentUpon>RangeValue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Metro\Controls\PageTemplates\Games\Components\MetaComponents\TagFieldControl.cs" />
     <Compile Include="Metro\Controls\PageTemplates\Games\Components\MetaData\DatumData.cs" />
     <Compile Include="Metro\Controls\PageTemplates\Games\Components\MetaData\MultiData.cs" />
     <Compile Include="Metro\Controls\PageTemplates\Games\Components\MetaData\RangeNumberData.cs" />
@@ -1095,6 +1099,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Metro\Controls\OtherMetroTabs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Metro\Controls\PageTemplates\Games\Components\HexView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

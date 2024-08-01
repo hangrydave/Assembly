@@ -13,7 +13,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaComponents
 	/// <summary>
 	///     Interaction logic for TagValue.xaml
 	/// </summary>
-	public partial class TagValue : UserControl
+	public partial class TagValue : TagFieldControl
 	{
 		private static RoutedCommand _jumpToCommand = new RoutedCommand();
 		public static RoutedCommand JumpToCommand { get { return _jumpToCommand; } }

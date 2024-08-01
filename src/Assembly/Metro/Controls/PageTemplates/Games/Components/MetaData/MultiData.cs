@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 {
@@ -49,7 +50,10 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return string.Format("{0} | {1} | {2} {3}", Type, Name, A, B);
 		}
-	}
+
+		private int _dataSize = 2 * Marshal.SizeOf(typeof(T));
+		public override int DataSize() => _dataSize;
+    }
 
 	public abstract class Multi3Data<T> : ValueField
 	{
@@ -109,6 +113,9 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return string.Format("{0} | {1} | {2} {3} {4}", Type, Name, A, B, C);
 		}
+
+		private int _dataSize = 3 * Marshal.SizeOf(typeof(T));
+		public override int DataSize() => _dataSize;
 	}
 
 	public abstract class Multi4Data<T> : ValueField
@@ -180,6 +187,9 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return string.Format("{0} | {1} | {2} {3} {4} {5}", Type, Name, A, B, C, D);
 		}
+
+		private int _dataSize = 4 * Marshal.SizeOf(typeof(T));
+		public override int DataSize() => _dataSize;
 	}
 
 	public class Degree2Data : Multi2Data<float>
@@ -465,7 +475,7 @@ namespace Assembly.Metro.Controls.PageTemplates.Games.Components.MetaData
 		{
 			return new RectangleData(Name, Offset, FieldAddress, Type, A, B, C, D, PluginLine, ToolTip);
 		}
-	}
+    }
 
 	public class Quaternion16Data : Multi4Data<short>
 	{
